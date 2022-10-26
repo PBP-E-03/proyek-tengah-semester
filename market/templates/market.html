@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block meta %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="flex flex-col">
+    <div class="container w-full flex flex-col justify-center items-center">
+        <h1 class="text-[#56C969] font-['Montserrat'] font-bold text-4xl">Trade Your Reward</h1>
+        <h1 class="text-black font-['Montserrat'] text-xl">Because You Deserve a Tremendous Rewards</h1>
+    </div>
+    <div class="container flex flex-row self-start gap-7 w-full h-1/2 left-[20px] p-[32px]">
+        <div class="container flex flex-col sm:w-1/4 w-1/8 shadow-md rounded-[10px] border-[16px] border-white rounded-[10px] gap-2">
+            {% load static %} <img src="{% static 'unsplash_164_6wVEHfI.png' %}" class="w-1/2 sm:w-full">
+            <p class="font-['Montserrat'] font-bold text-base pl-4">Nike Air Jordan</p>
+            <p class="pl-4 font-['Montserrat']"><span class="text-[#56C969]">* </span><span>remaining</span></p>
+            <div class="flex flex-row  gap-4 pb-[16px]">
+                <div class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</div>
+                <div class="font-['Montserrat']">NUMBER</div>
+                <div class="grow font-['Montserrat'] text-[#56C969] font-bold">+</div>
+            </div>
+            <div class="flex flex-row gap-12">
+                <div class="flex flex-row w-1/2 gap-8">
+                    <div class=""><img src="{% static 'Vectora.png' %}" class="pl-4 "></div>
+                    <p class="">Harga</p>
+                </div>
+                <div class="grow">
+                    <button class="button-primary text-white">BUY</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
