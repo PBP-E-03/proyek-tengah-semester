@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block meta %}
+{% endblock meta %}
+
+{% block content %}
+
+<div id = "title"> 
+    <p id = "leaderboard"> Leaderboard</p>
+</div>
+<style>
+    #title {
+        width: 240px; height: 44px; font-family: 'Montserrat'; font-style: normal; font-weight: 700; font-size: 36px;
+        line-height: 44px; color: #56C969; flex: none; order: 0; flex-grow: 0;
+    }
+    #leaderboard {
+        display: flex; flex-direction: column; justify-content: center; align-items: center;padding: 0px; gap: 10px;
+        position: absolute; width: 352px; height: 100px; left: 570px; top: 60px;    
+    }
+</style>
+
+<div id = "motto"> 
+    <p id = "among"> Be the Best Among the Generous</p>
+</div>
+<style>
+    #motto {
+        width: 352px; height: 24px; font-family: 'Montserrat'; font-style: normal; font-weight: 700; font-size: 20px;
+        line-height: 24px; text-align: center; color: #000000; flex: none; order: 1;flex-grow: 0;
+    }
+    #among {
+        display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0px; gap: 10px;
+        position: absolute; width: 352px; height: 160px; left: 570px; top: 67px;   
+    }
+</style>
+
+<div id = "negara"> 
+    <p id = "country">Country</p>
+</div>
+<style> 
+    #negara {
+        display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0px; gap: 10px;
+        position: absolute; width: 352px; height: 300px; left: 115px; top: 50px;
+    }
+    #country {
+        width: 68px; height: 20px; font-family: 'Montserrat'; font-style: normal; font-weight: 700; font-size: 16px;
+        line-height: 20px; color: #000000; flex: none; order: 0; flex-grow: 0;
+    }
+</style>
+
+<div id = "isi">
+    <p id = "kotakabu">Indonesia</p> 
+</div>
+<style>
+    #isi {
+        display: flex; flex-direction: column; justify-content: center;align-items: center; padding: 0px; gap: 10px;
+        position: absolute; width: 352px; height: 100px; left: 570px; top: 185px; font-weight: 700; font-size: 16px;
+        line-height: 20px;
+    }
+    #kotakabu {
+        display: flex; flex-direction: row; align-items: flex-start; padding: 10px; gap: 10px; width: 992px;
+        height: 40px; background: #DFDFDF;box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 10px;
+        flex: none; order: 1; flex-grow: 0;
+    }
+</style>
+
+<div id = "kolom1">
+    <p id = "column">Jono</p>
+    <p id = "column2">Jono</p>
+    <p id = "column3">Jono</p>
+    <p id = "column4">Jono</p>
+    <p id = "column5">Jono</p>
+    <p id = "columnyou">You</p>
+</div>
+<style>
+    #kolom1 {
+        display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0px;
+        gap: 10px; position: absolute; width: 352px; height: 100px; left: 570px; top: 420px; font-weight: 700;
+        font-size: 16px; line-height: 20px;    
+    }
+    #column {
+        display: flex; flex-direction: row; justify-content: center; align-items: center; padding: 5px 10px;
+        gap: 744px; width: 992px; height: 54px; background: #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 15px; flex: none; order: 0; flex-grow: 0; color: #56C969;
+    }
+    #column2 {
+        display: flex; flex-direction: row; justify-content: center; align-items: center; padding: 5px 10px;
+        gap: 744px; width: 992px; height: 54px; background: #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 15px; flex: none; order: 0; flex-grow: 0; color: #56C969;
+    }
+    #column3 {
+        display: flex; flex-direction: row; justify-content: center; align-items: center; padding: 5px 10px;
+        gap: 744px; width: 992px; height: 54px; background: #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 15px; flex: none; order: 0; flex-grow: 0; color: #56C969;
+    }
+    #column4 {
+        display: flex; flex-direction: row; justify-content: center; align-items: center; padding: 5px 10px;
+        gap: 744px; width: 992px; height: 54px; background: #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 15px; flex: none; order: 0; flex-grow: 0; color: #56C969;
+    }
+    #column5 {
+        display: flex; flex-direction: row; justify-content: center; align-items: center; padding: 5px 10px;
+        gap: 744px; width: 992px; height: 54px; background: #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 15px; flex: none; order: 0; flex-grow: 0; color: #56C969;
+    }
+    #columnyou {
+        display: flex; flex-direction: row; justify-content: center; align-items: center; padding: 5px 10px;
+        gap: 755px; width: 992px; height: 54px; background: #56C969; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 15px; flex: none; order: 5; flex-grow: 0;
+    }
+</style>
+
+{% endblock content %}
