@@ -5,285 +5,59 @@
 {% endblock meta %}
 
 {% block content %}
+<script type="text/javascript">
+function add(id, stock){
+    var countElement = document.getElementById("count "+id);
+    let count = parseInt(countElement.innerHTML);
+    countElement.innerHTML = count;
+    if (count < stock) {
+        count+=1;
+    }
+    countElement.innerHTML = count;
+}
+function sub(id){
+    var countElement = document.getElementById("count "+id);
+    let count = parseInt(countElement.innerHTML);
+    if (count >= 1) {
+        count-=1;
+    }
+    countElement.innerHTML = count;
+}
+</script>
+
 <div class="flex flex-col">
     <div class="container w-full flex flex-col justify-center items-center">
         <h1 class="text-[#56C969] font-['Montserrat'] font-bold text-4xl">Trade Your Reward</h1>
         <h1 class="text-black font-['Montserrat'] text-xl">Because You Deserve a Tremendous Rewards</h1>
     </div>
     <div class="container grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-4 w-full h-1/2 left-[20px] p-[32px]">
-        <div class="flex w-full justify-center">
-            <div class="container flex flex-col w-[225px] h-[308px] shadow-md rounded-[10px] border-[16px] border-white rounded-[10px]">
-                {% load static %} <img src="{% static 'unsplash_164_6wVEHfI.png' %}" class="w-1/2 sm:w-full">
-                <p class="font-['Montserrat'] font-bold text-base pl-4">Nike Air Jordan</p>
-                <p class="pl-4 font-['Montserrat']"><span class="text-[#56C969]">* </span><span>remaining</span></p>
-                <div class="flex flex-row  gap-4 pb-[16px]">
-                    <div class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</div>
-                    <div class="font-['Montserrat']">N</div>
-                    <div class="grow font-['Montserrat'] text-[#56C969] font-bold">+</div>
-                </div>
-                <div class="flex flex-row">
-                    <div class="flex flex-row w-1/2 gap-2">
-                        <div class=""><img src="{% static 'Vectora.png' %}" class=""></div>
-                        <p class="">Harga</p>
+        {% for product in list_products %}
+            <div id="{{ product.pk }}" class="flex w-full justify-center">
+                <div class="container flex flex-col w-[225px] h-[308px] shadow-md rounded-[10px] border-[16px] border-white rounded-[10px]">
+                    <div class="grow h-1/2">
+                        {% load static %} <img src="{{ product.image_url }}" class="w-1/2 sm:w-full">
                     </div>
-                    <div class="grow">
-                        <button class="w-full button-primary text-white">BUY</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex w-full justify-center">
-            <div class="container flex flex-col w-[225px] h-[308px] shadow-md rounded-[10px] border-[16px] border-white rounded-[10px]">
-                {% load static %} <img src="{% static 'unsplash_164_6wVEHfI.png' %}" class="w-1/2 sm:w-full">
-                <p class="font-['Montserrat'] font-bold text-base pl-4">Nike Air Jordan</p>
-                <p class="pl-4 font-['Montserrat']"><span class="text-[#56C969]">* </span><span>remaining</span></p>
-                <div class="flex flex-row  gap-4 pb-[16px]">
-                    <div class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</div>
-                    <div class="font-['Montserrat']">N</div>
-                    <div class="grow font-['Montserrat'] text-[#56C969] font-bold">+</div>
-                </div>
-                <div class="flex flex-row">
-                    <div class="flex flex-row w-1/2 gap-2">
-                        <div class=""><img src="{% static 'Vectora.png' %}" class=""></div>
-                        <p class="">Harga</p>
-                    </div>
-                    <div class="grow">
-                        <button class="w-full button-primary text-white">BUY</button>
+                    <div class="h-1/2">
+                        <p class="font-['Montserrat'] font-bold text-base pl-4">Nike Air Jordan</p>
+                        <p class="pl-4 font-['Montserrat']"><span class="text-[#56C969]">{{ product.stock }}</span><span class="pl-2"> remaining</span></p>
+                        <div class="flex flex-row  gap-4 pb-[16px]">
+                            <button onclick="sub({{ product.pk }})" class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</button>
+                            <object id="count {{ product.pk }}" class="grow-0 font-['Montserrat']">0</object>
+                            <button onclick="add({{ product.pk }}, {{ product.stock }})" class="grow text-left font-['Montserrat'] text-[#56C969] font-bold">+</button>
+                        </div>
+                        <div class="flex flex-row">
+                            <div class="flex flex-row w-1/2 gap-2">
+                                <div class=""><img src="{% static 'Vectora.png' %}" class=""></div>
+                                <p class="">Harga</p>
+                            </div>
+                            <div class="grow">
+                                <button class="w-full button-primary text-white">BUY</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="flex w-full justify-center">
-            <div class="container flex flex-col w-[225px] h-[308px] shadow-md rounded-[10px] border-[16px] border-white rounded-[10px]">
-                {% load static %} <img src="{% static 'unsplash_164_6wVEHfI.png' %}" class="w-1/2 sm:w-full">
-                <p class="font-['Montserrat'] font-bold text-base pl-4">Nike Air Jordan</p>
-                <p class="pl-4 font-['Montserrat']"><span class="text-[#56C969]">* </span><span>remaining</span></p>
-                <div class="flex flex-row  gap-4 pb-[16px]">
-                    <div class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</div>
-                    <div class="font-['Montserrat']">N</div>
-                    <div class="grow font-['Montserrat'] text-[#56C969] font-bold">+</div>
-                </div>
-                <div class="flex flex-row">
-                    <div class="flex flex-row w-1/2 gap-2">
-                        <div class=""><img src="{% static 'Vectora.png' %}" class=""></div>
-                        <p class="">Harga</p>
-                    </div>
-                    <div class="grow">
-                        <button class="w-full button-primary text-white">BUY</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex w-full justify-center">
-            <div class="container flex flex-col w-[225px] h-[308px] shadow-md rounded-[10px] border-[16px] border-white rounded-[10px]">
-                {% load static %} <img src="{% static 'unsplash_164_6wVEHfI.png' %}" class="w-1/2 sm:w-full">
-                <p class="font-['Montserrat'] font-bold text-base pl-4">Nike Air Jordan</p>
-                <p class="pl-4 font-['Montserrat']"><span class="text-[#56C969]">* </span><span>remaining</span></p>
-                <div class="flex flex-row  gap-4 pb-[16px]">
-                    <div class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</div>
-                    <div class="font-['Montserrat']">N</div>
-                    <div class="grow font-['Montserrat'] text-[#56C969] font-bold">+</div>
-                </div>
-                <div class="flex flex-row">
-                    <div class="flex flex-row w-1/2 gap-2">
-                        <div class=""><img src="{% static 'Vectora.png' %}" class=""></div>
-                        <p class="">Harga</p>
-                    </div>
-                    <div class="grow">
-                        <button class="w-full button-primary text-white">BUY</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex w-full justify-center">
-            <div class="container flex flex-col w-[225px] h-[308px] shadow-md rounded-[10px] border-[16px] border-white rounded-[10px]">
-                {% load static %} <img src="{% static 'unsplash_164_6wVEHfI.png' %}" class="w-1/2 sm:w-full">
-                <p class="font-['Montserrat'] font-bold text-base pl-4">Nike Air Jordan</p>
-                <p class="pl-4 font-['Montserrat']"><span class="text-[#56C969]">* </span><span>remaining</span></p>
-                <div class="flex flex-row  gap-4 pb-[16px]">
-                    <div class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</div>
-                    <div class="font-['Montserrat']">N</div>
-                    <div class="grow font-['Montserrat'] text-[#56C969] font-bold">+</div>
-                </div>
-                <div class="flex flex-row">
-                    <div class="flex flex-row w-1/2 gap-2">
-                        <div class=""><img src="{% static 'Vectora.png' %}" class=""></div>
-                        <p class="">Harga</p>
-                    </div>
-                    <div class="grow">
-                        <button class="w-full button-primary text-white">BUY</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex w-full justify-center">
-            <div class="container flex flex-col w-[225px] h-[308px] shadow-md rounded-[10px] border-[16px] border-white rounded-[10px]">
-                {% load static %} <img src="{% static 'unsplash_164_6wVEHfI.png' %}" class="w-1/2 sm:w-full">
-                <p class="font-['Montserrat'] font-bold text-base pl-4">Nike Air Jordan</p>
-                <p class="pl-4 font-['Montserrat']"><span class="text-[#56C969]">* </span><span>remaining</span></p>
-                <div class="flex flex-row  gap-4 pb-[16px]">
-                    <div class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</div>
-                    <div class="font-['Montserrat']">N</div>
-                    <div class="grow font-['Montserrat'] text-[#56C969] font-bold">+</div>
-                </div>
-                <div class="flex flex-row">
-                    <div class="flex flex-row w-1/2 gap-2">
-                        <div class=""><img src="{% static 'Vectora.png' %}" class=""></div>
-                        <p class="">Harga</p>
-                    </div>
-                    <div class="grow">
-                        <button class="w-full button-primary text-white">BUY</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex w-full justify-center">
-            <div class="container flex flex-col w-[225px] h-[308px] shadow-md rounded-[10px] border-[16px] border-white rounded-[10px]">
-                {% load static %} <img src="{% static 'unsplash_164_6wVEHfI.png' %}" class="w-1/2 sm:w-full">
-                <p class="font-['Montserrat'] font-bold text-base pl-4">Nike Air Jordan</p>
-                <p class="pl-4 font-['Montserrat']"><span class="text-[#56C969]">* </span><span>remaining</span></p>
-                <div class="flex flex-row  gap-4 pb-[16px]">
-                    <div class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</div>
-                    <div class="font-['Montserrat']">N</div>
-                    <div class="grow font-['Montserrat'] text-[#56C969] font-bold">+</div>
-                </div>
-                <div class="flex flex-row">
-                    <div class="flex flex-row w-1/2 gap-2">
-                        <div class=""><img src="{% static 'Vectora.png' %}" class=""></div>
-                        <p class="">Harga</p>
-                    </div>
-                    <div class="grow">
-                        <button class="w-full button-primary text-white">BUY</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex w-full justify-center">
-            <div class="container flex flex-col w-[225px] h-[308px] shadow-md rounded-[10px] border-[16px] border-white rounded-[10px]">
-                {% load static %} <img src="{% static 'unsplash_164_6wVEHfI.png' %}" class="w-1/2 sm:w-full">
-                <p class="font-['Montserrat'] font-bold text-base pl-4">Nike Air Jordan</p>
-                <p class="pl-4 font-['Montserrat']"><span class="text-[#56C969]">* </span><span>remaining</span></p>
-                <div class="flex flex-row  gap-4 pb-[16px]">
-                    <div class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</div>
-                    <div class="font-['Montserrat']">N</div>
-                    <div class="grow font-['Montserrat'] text-[#56C969] font-bold">+</div>
-                </div>
-                <div class="flex flex-row">
-                    <div class="flex flex-row w-1/2 gap-2">
-                        <div class=""><img src="{% static 'Vectora.png' %}" class=""></div>
-                        <p class="">Harga</p>
-                    </div>
-                    <div class="grow">
-                        <button class="w-full button-primary text-white">BUY</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex w-full justify-center">
-            <div class="container flex flex-col w-[225px] h-[308px] shadow-md rounded-[10px] border-[16px] border-white rounded-[10px]">
-                {% load static %} <img src="{% static 'unsplash_164_6wVEHfI.png' %}" class="w-1/2 sm:w-full">
-                <p class="font-['Montserrat'] font-bold text-base pl-4">Nike Air Jordan</p>
-                <p class="pl-4 font-['Montserrat']"><span class="text-[#56C969]">* </span><span>remaining</span></p>
-                <div class="flex flex-row  gap-4 pb-[16px]">
-                    <div class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</div>
-                    <div class="font-['Montserrat']">N</div>
-                    <div class="grow font-['Montserrat'] text-[#56C969] font-bold">+</div>
-                </div>
-                <div class="flex flex-row">
-                    <div class="flex flex-row w-1/2 gap-2">
-                        <div class=""><img src="{% static 'Vectora.png' %}" class=""></div>
-                        <p class="">Harga</p>
-                    </div>
-                    <div class="grow">
-                        <button class="w-full button-primary text-white">BUY</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex w-full justify-center">
-            <div class="container flex flex-col w-[225px] h-[308px] shadow-md rounded-[10px] border-[16px] border-white rounded-[10px]">
-                {% load static %} <img src="{% static 'unsplash_164_6wVEHfI.png' %}" class="w-1/2 sm:w-full">
-                <p class="font-['Montserrat'] font-bold text-base pl-4">Nike Air Jordan</p>
-                <p class="pl-4 font-['Montserrat']"><span class="text-[#56C969]">* </span><span>remaining</span></p>
-                <div class="flex flex-row  gap-4 pb-[16px]">
-                    <div class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</div>
-                    <div class="font-['Montserrat']">N</div>
-                    <div class="grow font-['Montserrat'] text-[#56C969] font-bold">+</div>
-                </div>
-                <div class="flex flex-row">
-                    <div class="flex flex-row w-1/2 gap-2">
-                        <div class=""><img src="{% static 'Vectora.png' %}" class=""></div>
-                        <p class="">Harga</p>
-                    </div>
-                    <div class="grow">
-                        <button class="w-full button-primary text-white">BUY</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex w-full justify-center">
-            <div class="container flex flex-col w-[225px] h-[308px] shadow-md rounded-[10px] border-[16px] border-white rounded-[10px]">
-                {% load static %} <img src="{% static 'unsplash_164_6wVEHfI.png' %}" class="w-1/2 sm:w-full">
-                <p class="font-['Montserrat'] font-bold text-base pl-4">Nike Air Jordan</p>
-                <p class="pl-4 font-['Montserrat']"><span class="text-[#56C969]">* </span><span>remaining</span></p>
-                <div class="flex flex-row  gap-4 pb-[16px]">
-                    <div class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</div>
-                    <div class="font-['Montserrat']">N</div>
-                    <div class="grow font-['Montserrat'] text-[#56C969] font-bold">+</div>
-                </div>
-                <div class="flex flex-row">
-                    <div class="flex flex-row w-1/2 gap-2">
-                        <div class=""><img src="{% static 'Vectora.png' %}" class=""></div>
-                        <p class="">Harga</p>
-                    </div>
-                    <div class="grow">
-                        <button class="w-full button-primary text-white">BUY</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex w-full justify-center">
-            <div class="container flex flex-col w-[225px] h-[308px] shadow-md rounded-[10px] border-[16px] border-white rounded-[10px]">
-                {% load static %} <img src="{% static 'unsplash_164_6wVEHfI.png' %}" class="w-1/2 sm:w-full">
-                <p class="font-['Montserrat'] font-bold text-base pl-4">Nike Air Jordan</p>
-                <p class="pl-4 font-['Montserrat']"><span class="text-[#56C969]">* </span><span>remaining</span></p>
-                <div class="flex flex-row  gap-4 pb-[16px]">
-                    <div class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</div>
-                    <div class="font-['Montserrat']">N</div>
-                    <div class="grow font-['Montserrat'] text-[#56C969] font-bold">+</div>
-                </div>
-                <div class="flex flex-row">
-                    <div class="flex flex-row w-1/2 gap-2">
-                        <div class=""><img src="{% static 'Vectora.png' %}" class=""></div>
-                        <p class="">Harga</p>
-                    </div>
-                    <div class="grow">
-                        <button class="w-full button-primary text-white">BUY</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex w-full justify-center">
-            <div class="container flex flex-col w-[225px] h-[308px] shadow-md rounded-[10px] border-[16px] border-white rounded-[10px]">
-                {% load static %} <img src="{% static 'unsplash_164_6wVEHfI.png' %}" class="w-1/2 sm:w-full">
-                <p class="font-['Montserrat'] font-bold text-base pl-4">Nike Air Jordan</p>
-                <p class="pl-4 font-['Montserrat']"><span class="text-[#56C969]">* </span><span>remaining</span></p>
-                <div class="flex flex-row  gap-4 pb-[16px]">
-                    <div class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</div>
-                    <div class="font-['Montserrat']">N</div>
-                    <div class="grow font-['Montserrat'] text-[#56C969] font-bold">+</div>
-                </div>
-                <div class="flex flex-row">
-                    <div class="flex flex-row w-1/2 gap-2">
-                        <div class=""><img src="{% static 'Vectora.png' %}" class=""></div>
-                        <p class="">Harga</p>
-                    </div>
-                    <div class="grow">
-                        <button class="w-full button-primary text-white">BUY</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 
