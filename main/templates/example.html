@@ -1,7 +1,29 @@
 {% extends 'base.html' %} {% load static %} {% block meta %}
 <title>Hello, world!</title>
 {% endblock meta %} {% block content %}
+<<<<<<< Updated upstream
 <h1 class="text-blue-600">Hello, world!</h1>
 <h2>ini donation</h2>
 <h3>ZZZZZZZZZZ</h3>
+=======
+
+<select name="" id="country-select">
+    
+</select>
+
+<script>
+    async function test() {
+        const response = await fetch("http://battuta.medunes.net/api/country/all/?callback=?&key=d0daed3e6e5d17c42e803fafab5e603f")
+        const responseJson = await response.json()
+
+        console.log(responseJson)
+        
+
+    }
+
+    test()
+</script>
+
+
+>>>>>>> Stashed changes
 {% endblock content %}

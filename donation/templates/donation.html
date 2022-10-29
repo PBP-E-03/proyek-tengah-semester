@@ -1,0 +1,301 @@
+{% extends 'base.html' %} {% block meta %}
+<title>Donation Page</title>
+{% endblock meta %}
+
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+    
+    if (window.location.pathname === "/donation/") {
+
+    const alertBox = document.getElementById('alert-box')
+    const form = document.getElementById('donation-form')
+
+    const csrf = document.getElementsByName('csrfmiddlewaretoken')
+
+    const nameDiv = document.getElementById("name-div")
+    const emailDiv = document.getElementById("email-div")
+    const phoneDiv = document.getElementById("phone-div") 
+
+    const someoneCheckbox = document.getElementById('id_checkbox_donate_for_someone')
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    var buttonList = document.getElementsByName("amount-button")
+
+    for (let i = 0; i < buttonList.length; i++) {
+        buttonList[i].addEventListener('click', ()=>{
+            console.log(buttonList[i].value)
+            document.getElementById('id_field_amount').value = buttonList[i].value
+        })
+    }
+
+    
+
+    someoneCheckbox.addEventListener('change', ()=>{
+        if(someoneCheckbox.checked) {
+            nameDiv.classList.remove("hidden")
+            nameDiv.classList.add("flex")
+
+            emailDiv.classList.remove("hidden")
+            emailDiv.classList.add("flex")
+            
+            phoneDiv.classList.remove("hidden")
+            phoneDiv.classList.add("flex")       
+        }
+        else {
+            nameDiv.classList.add("hidden")
+            nameDiv.classList.remove("flex")
+
+            emailDiv.classList.add("hidden")
+            emailDiv.classList.remove("flex")
+            
+            phoneDiv.classList.add("hidden")
+            phoneDiv.classList.remove("flex") 
+
+        }
+    })
+
+
+    const response = await fetch("{% url 'main:get_country' %}")
+    const countries = await response.json()
+
+    console.log(countries)
+
+    const countrySelect = document.getElementById("id_field_country")
+    const regionSelect = document.getElementById("id_field_region")
+
+    const showRegions = async ()=> {
+        regionSelect.innerHTML =""
+        const code = countrySelect.value
+        const response = await fetch(`/battuta/${code}`)
+        const regions = await response.json()
+
+        console.log(regions)
+        
+
+        for(let i=0; i<regions.length; i++) {
+            regionSelect.innerHTML += `
+        <option value="${regions[i].region}">${regions[i].region}</option>
+        `
+        }
+    }
+
+    countrySelect.addEventListener('click', showRegions)
+    regionSelect.addEventListener('click', showRegions)
+
+
+    form.addEventListener('submit', async (event)=>{
+        event.preventDefault()
+
+        const formData = {
+            field_amount: parseInt( document.getElementById("id_field_amount").value),
+            field_region: document.getElementById("id_field_region").value,
+            field_country: document.getElementById("id_field_country").value,
+            field_hopes: document.getElementById("id_field_hopes").value,
+            checkbox_donate_for_someone: document.getElementById("id_checkbox_donate_for_someone").checked,
+            field_name: document.getElementById("id_field_name").value,
+            field_phone: document.getElementById("id_field_phone").value,
+            field_email: document.getElementById("id_field_email").value,
+        };
+
+        console.log(formData)
+
+        console.log(JSON.stringify(formData))
+
+        const response = await fetch("{% url 'donation:submit_donation' %}", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie("csrftoken"),
+            },
+            body: JSON.stringify(formData),
+            
+        })
+        
+
+        console.log(await response.json())
+
+        // $.ajax({
+        //     method: 'POST',
+        //     url: "{% url 'donation:submit_donation' %}",
+        //     data: formData,
+        //     success: function(reponse) {
+        //         console.log(response)
+        //     },
+        //     error: function(response) {
+        //         console.log(response)
+        //     },
+        //     cache: false,
+        //     contentType: "application/json; charset=utf-8",
+        //     dataType: "json",
+        //     processData: false,
+        // })
+
+    })
+
+
+
+    console.log(someoneCheckbox)
+
+    console.log(csrf)
+
+    }
+    })
+
+</script>
+<div class="flex flex-col items-center w-full h-screen gap-6 p-5">
+
+    <div class="flex flex-col items-center justify-center whitespace-normal
+        w-96 h-">
+        <div id="alert-box" ></div>
+        <h1 class="font-montserrat font-bold text-4xl text-center
+            text-[#56C969]">Donate The Trees</h1>
+        <h2 class="font-montserrat font-bold text-xl text-center text-black">
+            And Contribute to Environment by Making an Impact to the World </h2>
+    </div>
+
+    <div class="flex flex-row items-start justify-center w-full gap-5">
+
+        <div class="w-1/3">
+            <img
+                src="https://drive.google.com/uc?export=view&id=1PEoE5n55JHIQW_h_YAi77FaOozY7dnAI"
+                alt="Forest">
+
+
+
+        </div>
+
+        <!-- DONATION FORM -->
+        <form
+            method="POST"
+            class="flex flex-col items-start gap-8 p-5 w-1/2 h-full shadow-lg
+            rounded-xl"
+            id="donation-form">
+            {% csrf_token %}
+            <!-- Donation amount -->
+            <div class="flex flex-col items-start gap-2 w-full">
+                <div>
+                    <h1 class="font-montserrat font-bold text-md text-start
+                        text-black">Donation Amount</h1>
+                </div>
+                <div class="flex flex-row gap-5">
+                    <button name="amount-button" id="1-amount-button" value="1" class="button-primary">1 Tree</button>
+                    <button name="amount-button" id="3-amount-button" value="3" class="button-primary">3 Trees</button>
+                    <button name="amount-button" id="5-amount-button" value="5" class="button-primary">5 Trees</button>
+                </div>
+
+
+                <div class="py-1 w-full">
+
+                    {{form.field_amount}}
+                </div>
+            </div>
+            <!-- country and region -->
+            <div class="flex flex-row items-start gap-9 w-full">
+                <div class="flex flex-col items-start gap-2 w-1/2">
+                    <h1 class="font-montserrat font-bold text-md text-start
+                        text-black">Country</h1>
+                    <!-- <input id="country" type="text" name="country" class="w-full
+                        rounded-lg outline outline-offset-0 outline-2"
+                        placeholder="Select the country" required
+                        /> -->
+                    {{form.field_country}}
+                </div>
+                <div class="flex flex-col items-start gap-2 w-1/2">
+                    <h1 class="font-montserrat font-bold text-md text-start
+                        text-black">Region</h1>
+                    <!-- <input id="region" type="text" name="region" class="w-full
+                        rounded-lg outline outline-offset-0 outline-2"
+                        placeholder="Select the region" required
+                        /> -->
+                    {{form.field_region}}
+                    
+                </div>
+            </div>
+            <!-- donate for someone? -->
+            <div class="flex flex-row gap-1 items-center">
+                <!-- <input id="donate_for_someone" type="checkbox"
+                    name="donate_for_someone" class="checked:bg-[#56C969]
+                    indeterminate:bg-gray-300"> -->
+                {{form.checkbox_donate_for_someone}}
+                <p class="font-montserrat font-bold text-sm text-start
+                    text-black">Donate for someone?</p>
+            </div>
+
+            <!-- name -->
+            <div id="name-div" class="hidden flex-col w-full">
+                <h1 class="font-montserrat font-bold text-md text-start
+                    text-black">Name</h1>
+                <!-- <input id="name" type="text" name="name" class="w-full
+                    rounded-lg outline outline-offset-0 outline-2"
+                    placeholder="John Doe" required
+                    /> -->
+                {{form.field_name}}
+            </div>
+            <!-- phone -->
+            <div id="phone-div" class="hidden flex-col w-full">
+                <h1 class="font-montserrat font-bold text-md text-start
+                    text-black">Phone</h1>
+                <!-- <input id="phone" type="text" name="phone" class="w-full
+                    rounded-lg outline outline-offset-0 outline-2"
+                    placeholder="0858XXXXXXXX" required
+                    /> -->
+                {{form.field_phone}}
+            </div>
+            <!-- email -->
+            <div id="email-div" class="hidden flex-col w-full">
+                <h1 class="font-montserrat font-bold text-md text-start
+                    text-black">Email</h1>
+                <!-- <input id="email" type="email" name="email" class="w-full
+                    rounded-lg outline outline-offset-0 outline-2"
+                    placeholder="example@gmail.com" required
+                    /> -->
+                {{form.field_email}}
+            </div>
+
+            <!-- hopes -->
+            <div class="flex flex-col w-full">
+                <h1 class="font-montserrat font-bold text-md text-start
+                    text-black">Hopes</h1>
+                <!-- <textarea id="hopes" name="hopes" class="w-full
+                    rounded-lg outline outline-offset-0 outline-2" rows="4"
+                    cols="50" placeholder="Your hopes for this donation"
+                    required></textarea> -->
+                {{form.field_hopes}}
+            </div>
+            <!-- donate button -->
+            <div class="flex flex-row">
+                <button type="submit" class="button-primary">Donate</button>
+            </div>
+
+            <div id="data" class="flex flex-col w-full items-start gap-4">
+            </div>
+
+
+
+        </form>
+
+
+
+    </div>
+</div>
+
+
+{% endblock content %}

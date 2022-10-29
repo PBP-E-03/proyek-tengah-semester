@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'theme',
     'django_browser_reload',
     'main',
+    'donation',
 ]
 
 MIDDLEWARE = [
@@ -147,4 +148,5 @@ INTERNAL_IPS = [
 ]
 
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+
 

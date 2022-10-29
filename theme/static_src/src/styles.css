@@ -4,7 +4,7 @@
 
 @layer components {
     .button-primary {
-        @apply py-[10px] px-[15px] font-bold bg-[#56C969] hover:bg-[#0E6A1D] rounded-xl
+        @apply py-[10px] px-[15px] font-bold bg-[#56C969] hover:bg-[#0E6A1D] rounded-xl text-white
     }
 
     .button-secondary {
@@ -15,3 +15,7 @@
         @apply py-[10px] px-[15px] font-bold bg-transparent border-2 border-[#56C969] hover:border-[#0E6A1D] rounded-xl
     }
 }
+
+[id^="id_field"] {
+    @apply w-full rounded-lg outline outline-offset-0 outline-2;
+  }
