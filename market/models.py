@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Product(models.Model):
-    image_url = models.CharField()
-    name = models.CharField()
+    image_url = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
     stock = models.IntegerField()
     price = models.IntegerField()
 
