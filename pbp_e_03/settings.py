@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'main',
     'market',
-    'leaderboard'
+    'leaderboard',
+    'authentication',
+    'phonenumber_field'
 ]
 
 MIDDLEWARE = [
@@ -151,4 +153,5 @@ INTERNAL_IPS = [
 
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd" if os.name == "nt" else "/usr/local/bin/npm"
     
+AUTH_USER_MODEL = 'authentication.User'
 

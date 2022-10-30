@@ -1,14 +1,58 @@
-{% load tailwind_tags %}
+{% load tailwind_tags %} {% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% tailwind_css %} 
-    {% block meta %} {% endblock meta %}
+    {% tailwind_css %} {% block meta %} {% endblock meta %}
   </head>
 
-  <body>
+  <body class="relative w-full h-screen bg-black">
+    <nav
+      class="fixed flex items-center justify-between w-full px-3 py-2 bg-white h-14"
+    >
+      <a href="/">
+        <img src="{% static '/images/GenerosiTree.png' %}" />
+      </a>
+      <div class="flex items-center gap-6">
+        <div class="flex gap-4">
+          <a href="/" class="font-bold">Home</a>
+          <a href="/donation" class="font-bold">Donation</a>
+          <a href="/market" class="font-bold">Market</a>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="relative">
+          <button id="dropdown-btn" class="font-bold text-[#56C969]">
+            Hello, {{user.get_name }}
+          </button>
+          <div
+            id="dropdown"
+            class="absolute flex-col hidden w-full gap-2 px-4 py-2 mt-6 bg-white rounded-lg"
+          >
+            <div>test</div>
+            <div>test</div>
+            <div>
+              <button
+                id="logout-btn"
+                class="font-bold text-red-600 hover:text-red-800"
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <button id="login-btn" class="text-white button-primary">Login</button
+        >{% endif %}
+      </div>
+    </nav>
+    <button id="test" class="text-white mt-96">test</button>
     {% block content %} {% endblock content %}
+    <div
+      id="modal"
+      class="absolute top-0 z-10 flex-col items-center justify-center hidden w-full h-screen gap-4 bg-black/50"
+    ></div>
+
+    <script src="{% static '/js/base.js' %}"></script>
   </body>
 </html>
