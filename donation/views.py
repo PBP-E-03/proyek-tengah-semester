@@ -38,16 +38,26 @@ def submit_donation(request):
         if form.is_valid():  
  
             amount = int(form.cleaned_data['field_amount'])
+            country = form.cleaned_data['field_country']
             # not using cleaned data because cant explicitly declare choices in forms.py
             region = form.data['field_region']
-            country = form.cleaned_data['field_country']
+            
             donate_for_someone = form.cleaned_data['checkbox_donate_for_someone']
             name = form.cleaned_data['field_name']
             email = form.cleaned_data['field_email']
             phone = form.cleaned_data['field_phone']
             hopes = form.cleaned_data['field_hopes']
 
+            # raise error for empty region (possible case)
 
+            if region==None or region=="":
+                data = {
+                "message": 'Invalid region'
+                }
+            
+                json_object = json.dumps(data, indent = 4) 
+
+                return JsonResponse(json.loads(json_object))
 
             Person_instance = None
 
@@ -57,13 +67,16 @@ def submit_donation(request):
                 Person_instance.save()
 
             user = request.user
+
+            # TODO : BELOM ADA IMPLEMENTASI KOINN UNTUK USER
             
             # BELOM ADA USER
             Donation_instance = Donation(amount=amount, region=region, country=country, hopes=hopes, person=Person_instance, donate_for_someone=donate_for_someone)
             Donation_instance.save()
 
             data = {
-            "message": 'Successfully submitted'
+            "message": 'Successfully submitted',
+            "coin" : '0'
             }
         
             json_object = json.dumps(data, indent = 4) 
