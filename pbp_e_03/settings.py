@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'market',
     'leaderboard',
     'authentication',
+    'user_profile',
     'phonenumber_field'
 ]
 

@@ -15,11 +15,11 @@
     @apply py-[10px] px-[15px] font-bold bg-transparent border-2 border-[#56C969] hover:border-[#0E6A1D] rounded-xl;
   }
 
-  input[id^='id_']:not([type='checkbox']) {
+  [id^='id_']:not([type='checkbox']) {
     @apply w-full rounded-lg border-2 group-hover:border-[#56C969] group-focus:border-[#56C969];
   }
 
-  input[id^='id_'][type='checkbox'] {
+  [id^='id_'][type='checkbox'] {
     @apply rounded border-2  hover:bg-[#56C969] focus:bg-[#56C969] checked:bg-[#56C969];
   }
 }
