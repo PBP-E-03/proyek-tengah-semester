@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+[id^='id_']:not([type='checkbox']) {
+    @apply w-full rounded-lg border-2 group-hover:border-[#56C969] group-focus:border-[#56C969];
+  }
+
 @layer components {
     .button-primary {
         @apply py-[10px] px-[15px] font-bold bg-[#56C969] hover:bg-[#0E6A1D] rounded-xl text-white
@@ -14,8 +18,7 @@
     .button-tertiary {
         @apply py-[10px] px-[15px] font-bold bg-transparent border-2 border-[#56C969] hover:border-[#0E6A1D] rounded-xl
     }
+
+
 }
 
-[id^="id_field"] {
-    @apply w-full rounded-lg outline outline-offset-0 outline-2;
-  }

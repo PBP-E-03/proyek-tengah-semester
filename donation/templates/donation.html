@@ -18,7 +18,7 @@
     const emailDiv = document.getElementById("email-div")
     const phoneDiv = document.getElementById("phone-div") 
 
-    const someoneCheckbox = document.getElementById('id_checkbox_donate_for_someone')
+    const someoneCheckbox = document.getElementById('id_donate_for_someone')
 
     function getCookie(name) {
         let cookieValue = null;
@@ -41,7 +41,7 @@
     for (let i = 0; i < buttonList.length; i++) {
         buttonList[i].addEventListener('click', ()=>{
             console.log(buttonList[i].value)
-            document.getElementById('id_field_amount').value = buttonList[i].value
+            document.getElementById('id_amount').value = buttonList[i].value
         })
     }
 
@@ -77,8 +77,8 @@
 
     console.log(countries)
 
-    const countrySelect = document.getElementById("id_field_country")
-    const regionSelect = document.getElementById("id_field_region")
+    const countrySelect = document.getElementById("id_country")
+    const regionSelect = document.getElementById("id_region")
 
     const showRegions = async ()=> {
         regionSelect.innerHTML =""
@@ -114,33 +114,45 @@
         .fadeOut()
     })
 
+    const paymentForm = document.getElementById('id_payment')
 
     form.addEventListener('submit', async (event)=>{
         event.preventDefault()
 
         const formData = {
-            field_amount: parseInt( document.getElementById("id_field_amount").value)/10000,
-            field_region: document.getElementById("id_field_region").value,
-            field_country: document.getElementById("id_field_country").value,
-            field_hopes: document.getElementById("id_field_hopes").value,
-            checkbox_donate_for_someone: document.getElementById("id_checkbox_donate_for_someone").checked,
-            field_name: document.getElementById("id_field_name").value,
-            field_phone: document.getElementById("id_field_phone").value,
-            field_email: document.getElementById("id_field_email").value,
+            amount: parseInt( document.getElementById("id_amount").value)/10000,
+            region: document.getElementById("id_region").value,
+            country: document.getElementById("id_country").value,
+            hopes: document.getElementById("id_hopes").value,
+            donate_for_someone: document.getElementById("id_donate_for_someone").checked,
+            name: document.getElementById("id_name").value,
+            phone: document.getElementById("id_phone").value,
+            email: document.getElementById("id_email").value,
         };
 
+        var formDataobj = new FormData()
+        formDataobj.append('amount', formData['amount']) 
+        formDataobj.append('region', formData['region']) 
+        formDataobj.append('country', formData['country']) 
+        formDataobj.append('hopes', formData['hopes']) 
+        formDataobj.append('donate_for_someone', formData['donate_for_someone']) 
+        formDataobj.append('name', formData['name']) 
+        formDataobj.append('phone', formData['phone']) 
+        formDataobj.append('email', formData['email']) 
+        formDataobj.append('payment', paymentForm.files[0]) 
+
         console.log(formData)
+        console.log(formDataobj)
 
         console.log(JSON.stringify(formData))
+        console.log(JSON.stringify(formDataobj))
 
         const response = await fetch("{% url 'donation:submit_donation' %}", {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
                 'X-CSRFToken': getCookie("csrftoken"),
             },
-            body: JSON.stringify(formData),
+            body: formDataobj,
             
         })
         
@@ -160,10 +172,10 @@
             $fullAlert = $('#full-error-alert')
         }
 
-        document.getElementById('success-alert-message').innerText = `You just donated ${formData['field_amount']} trees in ${formData['field_region']}.
+        document.getElementById('success-alert-message').innerText = `You just donated ${formData['amount']} trees in ${formData['region']}.
         ${[message.coin]} coins have been added to your account`
 
-        document.getElementById('error-alert-message').innerText = `Please check the fields and make sure you have filled everything required`
+        document.getElementById('error-alert-message').innerText = `Please check the fields and make sure you have filled everything required correctly`
 
         $fullAlert 
         .delay(100)
@@ -288,9 +300,11 @@
                         <h1 class="text-lg font-bold font-montserrat">Rp</h1>
                         
 
-                        {{form.field_amount}}
+                        {{form.amount}}
             
                 </div>
+                <p class="mt-2 text-sm text-black font-montserrat font-bold">Your input has to be in multiples of 10000</p>
+
             </div>
             <!-- country and region -->
             <div class="flex flex-row items-start gap-9 w-full">
@@ -301,7 +315,7 @@
                         rounded-lg outline outline-offset-0 outline-2"
                         placeholder="Select the country" required
                         /> -->
-                    {{form.field_country}}
+                    {{form.country}}
                 </div>
                 <div class="flex flex-col items-start gap-2 w-1/2">
                     <h1 class="font-montserrat font-bold text-md text-start
@@ -310,7 +324,7 @@
                         rounded-lg outline outline-offset-0 outline-2"
                         placeholder="Select the region" required
                         /> -->
-                    {{form.field_region}}
+                    {{form.region}}
                     
                 </div>
             </div>
@@ -319,7 +333,7 @@
                 <!-- <input id="donate_for_someone" type="checkbox"
                     name="donate_for_someone" class="checked:bg-[#56C969]
                     indeterminate:bg-gray-300"> -->
-                {{form.checkbox_donate_for_someone}}
+                {{form.donate_for_someone}}
                 <p class="font-montserrat font-bold text-sm text-start
                     text-black">Donate for someone?</p>
             </div>
@@ -332,7 +346,7 @@
                     rounded-lg outline outline-offset-0 outline-2"
                     placeholder="John Doe" required
                     /> -->
-                {{form.field_name}}
+                {{form.name}}
             </div>
             <!-- phone -->
             <div id="phone-div" class="hidden flex-col w-full">
@@ -342,7 +356,7 @@
                     rounded-lg outline outline-offset-0 outline-2"
                     placeholder="0858XXXXXXXX" required
                     /> -->
-                {{form.field_phone}}
+                {{form.phone}}
             </div>
             <!-- email -->
             <div id="email-div" class="hidden flex-col w-full">
@@ -352,7 +366,7 @@
                     rounded-lg outline outline-offset-0 outline-2"
                     placeholder="example@gmail.com" required
                     /> -->
-                {{form.field_email}}
+                {{form.email}}
             </div>
 
             <!-- hopes -->
@@ -363,7 +377,14 @@
                     rounded-lg outline outline-offset-0 outline-2" rows="4"
                     cols="50" placeholder="Your hopes for this donation"
                     required></textarea> -->
-                {{form.field_hopes}}
+                {{form.hopes}}
+            </div>
+
+            <!-- payment image -->
+            <div class="flex flex-col w-full">
+                <h1 class="font-montserrat font-bold text-md text-start
+                    text-black">Proof of Payment</h1>
+                {{form.payment}}
             </div>
             <!-- donate button -->
             <div class="flex flex-row">

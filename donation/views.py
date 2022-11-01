@@ -27,52 +27,65 @@ def submit_donation(request):
 
     print(request.method)
     if request.method == 'POST':
-        bodyRequest = json.loads(request.body.decode("utf-8"))
+        # bodyRequest = json.loads(request.body.decode("utf-8"))
+        # bodyRequest2 = request.POST
 
-        form = DonationForm(bodyRequest)
-
-        print(form.data)
-        print(form.data['field_region'])
+        form = DonationForm(request.POST, request.FILES)
+        # print(form)
+        # print(form.data)
+        # print(form.data['region'])
 
 
         if form.is_valid():  
  
-            amount = int(form.cleaned_data['field_amount'])
-            country = form.cleaned_data['field_country']
-            # not using cleaned data because cant explicitly declare choices in forms.py
-            region = form.data['field_region']
+            # amount = int(form.cleaned_data['amount'])
+            # country = form.cleaned_data['country']
+            # # not using cleaned data because cant explicitly declare choices in forms.py
+            # region = form.data['region']
             
-            donate_for_someone = form.cleaned_data['checkbox_donate_for_someone']
-            name = form.cleaned_data['field_name']
-            email = form.cleaned_data['field_email']
-            phone = form.cleaned_data['field_phone']
-            hopes = form.cleaned_data['field_hopes']
+            # donate_for_someone = form.cleaned_data['donate_for_someone']
+            
+            # hopes = form.cleaned_data['hopes']
+
+            obj = form.save(commit=False)
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            phone = form.cleaned_data['phone']
+            person_instance = Person(name=name, phone=phone, email=email) 
+            person_instance.save()
+
+            print(person_instance)
+            obj.person = person_instance
+            obj.save()
+
+
+
 
             # raise error for empty region (possible case)
 
-            if region==None or region=="":
-                data = {
-                "message": 'Invalid region'
-                }
+            # if region==None or region=="":
+            #     data = {
+            #     "message": 'Invalid region'
+            #     }
             
-                json_object = json.dumps(data, indent = 4) 
+            #     json_object = json.dumps(data, indent = 4) 
 
-                return JsonResponse(json.loads(json_object))
+            #     return JsonResponse(json.loads(json_object))
 
-            Person_instance = None
+            # Person_instance = None
 
-            if donate_for_someone==True :
+            # if donate_for_someone==True :
 
-                Person_instance = Person(name=name, phone=phone, email=email)
-                Person_instance.save()
+            #     Person_instance = Person(name=name, phone=phone, email=email)
+            #     Person_instance.save()
 
             user = request.user
 
             # TODO : BELOM ADA IMPLEMENTASI KOINN UNTUK USER
             
             # BELOM ADA USER
-            Donation_instance = Donation(amount=amount, region=region, country=country, hopes=hopes, person=Person_instance, donate_for_someone=donate_for_someone)
-            Donation_instance.save()
+            # Donation_instance = Donation(amount=amount, region=region, country=country, hopes=hopes, person=Person_instance, donate_for_someone=donate_for_someone)
+            # Donation_instance.save()
 
             data = {
             "message": 'Successfully submitted',
