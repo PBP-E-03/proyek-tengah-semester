@@ -4,7 +4,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- import Monsterrat font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto&display=swap" rel="stylesheet">
+
     {% tailwind_css %} {% block meta %} {% endblock meta %}
+
   </head>
 
   <body class="relative w-full h-screen bg-black">
@@ -48,11 +53,13 @@
     </nav>
     <button id="test" class="text-white mt-96">test</button>
     {% block content %} {% endblock content %}
+
     <div
       id="modal"
       class="absolute top-0 z-10 flex-col items-center justify-center hidden w-full h-screen gap-4 bg-black/50"
     ></div>
 
     <script src="{% static '/js/base.js' %}"></script>
+
   </body>
 </html>
