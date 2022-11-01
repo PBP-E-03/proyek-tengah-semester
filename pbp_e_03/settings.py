@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'theme',
     'django_browser_reload',
     'main',
+    'donation',
     'market',
     'leaderboard',
     'authentication',
@@ -131,6 +132,10 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+MEDIA_URL = 'media/'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
@@ -155,4 +160,5 @@ INTERNAL_IPS = [
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd" if os.name == "nt" else "/usr/local/bin/npm"
     
 AUTH_USER_MODEL = 'authentication.User'
+
 
