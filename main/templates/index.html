@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% load static %} 
+{% block content %} 
+<div class="w-full overflow-hidden h-max">
+    <section class="w-full h-screen bg-no-repeat bg-cover" style="background-image: url({% static 'images/hero-bg.png' %});">
+        <div class="flex items-center justify-center w-full h-screen bg-black/50">
+            <div class="flex flex-col items-center w-1/4 gap-4">
+                <h1 class="flex flex-col">
+                    <img src="{% static '/images/GenerosiTree-white.svg' %}" />
+                    <div class="w-full">
+                        <span class="text-4xl font-bold text-white">Be Generous</span>
+                    </div>
+                    <div class="flex justify-end w-full">
+                        <span class="text-4xl font-bold text-white">Be <span class="text-[#56C969]">Tree</span>mendous</span>
+                    </div>
+                </h1>
+                <a href="#how-it-works" class="text-white button-primary">Get To Know More</a>
+            </div>
+        </div>
+    </section>
+    <section id="how-it-works" class="flex items-center flex-col gap-12 py-16 px-14 bg-[#56C969]">
+        <h2 class="text-4xl font-bold text-white">How It Works</h2>
+        <div class="flex justify-around w-full">
+            <div class="flex flex-col items-center gap-4 w-44">
+                <img src="{% static '/images/location-pin.svg' %}"/>
+                <span class="font-bold text-center text-white">Choose the Location You Desired to Donate</span>
+            </div>
+            <div class="flex flex-col items-center gap-4 w-44">
+                <img src="{% static '/images/tree.svg' %}"/>
+                <span class="font-bold text-center text-white">Choose the Number of Trees that Will be Donated</span>
+            </div>
+            <div class="flex flex-col items-center gap-4 w-44">
+                <img src="{% static '/images/donation.svg' %}"/>
+                <span class="font-bold text-center text-white">Tap to Donate the Tree in Your Desired Location</span>
+            </div>
+            <div class="flex flex-col items-center gap-4 w-44">
+                <img src="{% static '/images/leaderboard.svg' %}"/>
+                <span class="font-bold text-center text-white">Rise Your Rank and become the Best Among the Others </span>
+            </div>
+        </div>
+    </section>
+    <section class="flex flex-col items-center gap-12 px-24 py-10">
+        <div class="flex items-center w-[916px]">
+            <img src="{% static '/images/phone.svg' %}"/>
+            <div class="flex flex-col -ml-20">
+                <h2 class="text-5xl font-bold text-[#56C969]">Be Generous</h2>
+                <span class="text-2xl font-bold">Make an impact on the world by being generous in donating trees via GenerosiTree </span>
+            </div>
+        </div>
+        <div class="flex flex-row-reverse items-center w-[928px]">
+            <img src="{% static '/images/pc.svg' %}"/>
+            <div class="flex flex-col mr-8">
+                <h2 class="text-5xl font-bold text-[#56C969] text-right">Get Tremendous</h2>
+                <span class="text-2xl font-bold text-right">By being generous, You may get a tremendous amount of rewards</span>
+            </div>
+        </div>
+    </section>
+    <section class="relative flex items-center justify-center bg-[#4F985B] py-14 overflow-hidden">
+        <div class="w-[491px] flex flex-col gap-7 items-center">
+            <span class="text-4xl font-bold text-center text-white">Ready to Make an Impact to the World?</span>
+            <button id="register-btn" class="text-white button-primary w-[224px]">Join Now!</button>    
+        </div>
+        <img src="{% static '/images/leaf-left.svg' %}" class="absolute left-0 -bottom-24"/>
+        <img src="{% static '/images/leaf-right.svg' %}" class="absolute right-0 -bottom-12"/>
+    </section>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="{% static '/js/landing.js' %}"></script>
+{% endblock script %}

@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   loginButton?.addEventListener('click', async () => {
+    document.body.classList.add('overflow-hidden')
     modal.classList.remove('hidden');
     modal.classList.add('flex');
 
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cancelButton.addEventListener('click', () => {
         modal.classList.add('hidden');
         modal.classList.remove('flex');
+        document.body.classList.remove('overflow-hidden')
       });
 
       registrationForm.addEventListener('submit', async (event) => {
@@ -93,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cancelButton.addEventListener('click', () => {
       modal.classList.add('hidden');
       modal.classList.remove('flex');
+      document.body.classList.remove('overflow-hidden')
     });
 
     loginForm.addEventListener('submit', async (event) => {

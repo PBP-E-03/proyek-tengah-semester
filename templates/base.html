@@ -4,6 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generositree</title>
 
     <!-- import Monsterrat font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto&display=swap" rel="stylesheet">
@@ -49,14 +50,18 @@
         >{% endif %}
       </div>
     </nav>
-
-    {% block content %} 
-    {% endblock content %}
     
     <div
       id="modal"
       class="absolute top-0 z-10 flex-col items-center justify-center hidden w-full h-screen gap-4 bg-black/50"
     ></div>
+
+    {% block content %} 
+    {% endblock content %}
+
+    <footer class="flex justify-center w-full py-8 font-bold bg-[#56C969] text-white">Developed with ❤️ by PBP E 03</footer>
+    
+    
 
     <script src="{% static '/js/base.js' %}"></script>
     {% block script %}{% endblock script %}
