@@ -4,7 +4,7 @@ from authentication.models import User
 from phonenumber_field.formfields import PhoneNumberField
 
 class RegistrationForm(UserCreationForm):
-    name = forms.CharField(required=True, label="Name", widget=forms.TextInput(attrs={
+    username = forms.CharField(required=True, label="Name", widget=forms.TextInput(attrs={
         'placeholder': "John Doe"
     }))
     phone = PhoneNumberField(region="ID", required=True, label="Phone Number", widget=forms.TextInput(attrs={
@@ -16,7 +16,7 @@ class RegistrationForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ('name', 'phone', 'address', 'email')
+        fields = ('username', 'phone', 'address', 'email')
         widgets = {
             'email': forms.EmailInput(attrs={
                 'placeholder': "example@mail.com"
