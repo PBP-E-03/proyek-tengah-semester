@@ -98,12 +98,12 @@ const getProducts = async (pageNumber) => {
             +
           </button>
         </div>
-        <div class="flex flex-row items-center">
-          <div class="flex w-1/2 gap-2">
+        <div class="flex md:flex-row flex-col items-center gap-2">
+          <div class="flex md:w-1/2 gap-2 w-full md:justify-start justify-center">
             <img src="/static/images/coin.png" />
             <span class="font-bold">${product.price}</span>
           </div>
-          <div class="grow">
+          <div class="grow md:w-1/2 w-full">
             <button class="w-full text-white button-primary">BUY</button>
           </div>
         </div>
