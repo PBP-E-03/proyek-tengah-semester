@@ -24,3 +24,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_name(self):
         return self.username
+    
+    def get_coin(self):
+        return self.coin_amount

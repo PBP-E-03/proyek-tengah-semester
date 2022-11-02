@@ -34,8 +34,14 @@
           </div>
           {% if user.is_authenticated %}
           <div class="relative">
-            <button id="dropdown-btn" class="font-bold text-[#56C969]">
-              Hello, {{user.get_name }}
+            <button id="dropdown-btn" class="flex flex-col gap-2">
+              <span class="font-bold text-[#56C969]">
+                Hello, {{user.get_name }}
+              </span>
+              <span class="flex items-center gap-2">
+                <img src="/static/images/coin.png" />
+                <span class="font-bold">{{ user.get_coin }}</span>
+              </span>
             </button>
             <div
               id="dropdown"
