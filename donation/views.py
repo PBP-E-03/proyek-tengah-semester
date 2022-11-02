@@ -1,19 +1,9 @@
-import datetime
 import json
-
-from django.shortcuts import render, redirect
-from donation.models import Donation, Person
+from django.shortcuts import render
+from donation.models import Person
 from donation.forms import DonationForm
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, HttpResponseNotFound
+from django.http import  JsonResponse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
-from django.urls import reverse
-from django.core import serializers
-from django.views.decorators.csrf import csrf_exempt
-
-from django.template import RequestContext
 
 # Create your views here.
 @login_required(login_url='/')
