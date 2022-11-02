@@ -1,0 +1,55 @@
+{% block content %}
+<div
+  class="flex flex-col items-center justify-center w-full gap-5 p-4 bg-white md:p-6 lg:w-1/4 md:w-1/2 rounded-3xl"
+  id="login-modal"
+>
+  <div class="flex flex-col items-center">
+    <h1 class="text-3xl font-bold text-[#56C969]">Login</h1>
+    <h2 class="text-lg font-bold">To Start Make an Impact</h2>
+  </div>
+
+  <span id="alert" class="hidden w-full px-4 py-2 text-white rounded-xl"></span>
+
+  <form id="login-form" class="flex flex-col w-full gap-5">
+    <div class="flex flex-col group">
+      <label
+        for="id_email"
+        class="group-hover:text-[#56C969] group-focus:text-[#56C969]"
+        >Email</label
+      >
+      {{form.email}}
+    </div>
+    <div class="flex flex-col group">
+      <label
+        for="id_password"
+        class="group-hover:text-[#56C969] group-focus:text-[#56C969]"
+        >Password</label
+      >
+      {{form.password}}
+    </div>
+    <div class="flex justify-between">
+      <label class="flex items-center gap-2">
+        {{form.remember_me}} <span>Remember Me</span>
+      </label>
+    </div>
+    <div class="flex w-full gap-5">
+      <button id="cancel-login" class="w-1/2 text-white button-secondary">
+        Cancel
+      </button>
+      <button
+        type="submit"
+        id="submit-login"
+        class="w-1/2 text-white button-primary"
+      >
+        Login
+      </button>
+    </div>
+  </form>
+  <div
+    id="registration-anchor"
+    class="w-full font-bold text-center text-blue-600 cursor-pointer hover:text-blue-800"
+  >
+    Doesn’t Have any Account?
+  </div>
+</div>
+{% endblock content %}

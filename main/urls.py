@@ -6,6 +6,6 @@ app_name = 'main'
 
 urlpatterns = [
     path('', index, name='index'),
-    path('battuta/country', get_country, name='get_country'),
-    path('battuta/<str:country_code>', get_region, name='get_region'),
+    path('location/country', get_country, name='get_country'),
+    path('location/<str:country_code>', get_region, name='get_region'),
 ]

@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="flex flex-col w-full h-screen gap-6 px-6 py-16">
+  <div class="flex flex-col items-center justify-center w-full">
+    <h1
+      class="text-[#56C969] font-['Montserrat'] font-bold text-4xl text-center"
+    >
+      Trade Your Reward
+    </h1>
+    <h2 class="text-black font-['Montserrat'] text-xl text-center">
+      Because You Deserve a Tremendous Rewards
+    </h2>
+  </div>
+  <div
+    id="cards-container"
+    class="grid w-full grid-cols-2 gap-6 py-4 overflow-auto md:grid-cols-3 lg:grid-cols-4"
+  ></div>
+  <div class="flex justify-center w-full gap-4">
+    <button id="prev-btn" class="font-bold text-[#56C969]">Prev</button>
+    <span class="flex gap-2 font-bold">
+      Page
+      <span id="current-page" class="text-[#56C969]"></span>
+      of
+      <span id="number-pages"></span>
+    </span>
+    <button id="next-btn" class="font-bold text-[#56C969]">Next</button>
+  </div>
+</div>
+
+{% endblock content %} {% block script %}
+<script src="{% static '/js/market.js' %}"></script>
+<script>
+  function add(id, stock) {
+    var countElement = document.getElementById('count-' + id);
+    let count = parseInt(countElement.innerHTML);
+    countElement.innerHTML = count;
+    if (count < stock) {
+      count += 1;
+    }
+    countElement.innerHTML = count;
+  }
+
+  function sub(id) {
+    var countElement = document.getElementById('count-' + id);
+    let count = parseInt(countElement.innerHTML);
+    if (count >= 1) {
+      count -= 1;
+    }
+    countElement.innerHTML = count;
+  }
+</script>
+{% endblock script %}
