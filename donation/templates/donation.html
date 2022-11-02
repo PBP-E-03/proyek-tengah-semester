@@ -1,223 +1,257 @@
-{% extends 'base.html' %} {% load static %} {% block meta %}
-<title>Donation Page</title>
-{% endblock meta %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-{% block content %}
-
-
-    <div class="flex flex-col items-center w-full h-screen gap-6 p-5">
-
-        <!-- ALERT BOXES -->
-        <div class="flex flex-col gap-5">
-            <div name="full-alert" id="full-success-alert" style="display: none;" class="w-full overflow-hidden rounded-lg bg-green-100 text-green-700 shadow-md shadow-green-500/20">
-              <div class="flex">
-                <div class="flex items-center gap-4 p-4">
-                  <div class="shrink-0">
-                    <svg width="32" height="32" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M20 16v-6h2v6a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2h8v2H8v12h12m-9.09-8.92L14 10.17l6.59-6.59L22 5l-8 8l-4.5-4.5l1.41-1.42M16 20v2H4a2 2 0 0 1-2-2V7h2v13h12Z"></path>
-                    </svg>
-                  </div>
-                  <div class="space-y-1">
-                    <p class="font-bold capitalize">
-                      Donation Submitted!
-                    </p>
-                    <p id="success-alert-message" class="text-md">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et pharetra dui, sed varius tellus.
-                    </p>
-                  </div>
-                </div>
-                <div class="flex cursor-pointer items-center border-l border-green-200 px-4 hover:bg-green-200">
-                  <button class="" id="close-success-alert">
-                    <svg width="20" height="28" viewBox="0 0 24 24">
-                      <path fill="currentColor" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-    
-            <div name="full-alert" id="full-error-alert" style="display: none;" class="max-w-lg overflow-hidden rounded-lg bg-rose-100 text-rose-700 shadow-md shadow-rose-500/20">
-                <div class="flex">
-                  <div class="flex items-center gap-4 p-4">
-                    <div class="shrink-0">
-                        <svg width="32" height="32" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M12 13q.425 0 .713-.288Q13 12.425 13 12V7.975q0-.425-.287-.7Q12.425 7 12 7t-.712.287Q11 7.575 11 8v4.025q0 .425.288.7q.287.275.712.275Zm0 4q.425 0 .713-.288Q13 16.425 13 16t-.287-.713Q12.425 15 12 15t-.712.287Q11 15.575 11 16t.288.712Q11.575 17 12 17Zm0 5q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Zm0-10Zm0 8q3.325 0 5.663-2.337Q20 15.325 20 12t-2.337-5.663Q15.325 4 12 4T6.338 6.337Q4 8.675 4 12t2.338 5.663Q8.675 20 12 20Z"></path>
-                        </svg>
-                    </div>
-                    <div class="space-y-1">
-                      <p class="font-bold capitalize">
-                        An Error Occured
-                      </p>
-                      <p id="error-alert-message" class="text-md">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et pharetra dui, sed varius tellus.
-                      </p>
-                    </div>
-                  </div>
-                  <div class="flex cursor-pointer items-center border-l border-rose-200 px-5 hover:bg-rose-200">
-                    <button class="" id="close-error-alert">
-                      <svg width="20" height="28" viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-    
+<div class="flex flex-col items-center w-full gap-6 p-5 h-max">
+  <!-- ALERT BOXES -->
+  <div class="flex flex-col gap-5">
+    <div
+      name="full-alert"
+      id="full-success-alert"
+      style="display: none"
+      class="w-full overflow-hidden text-green-700 bg-green-100 rounded-lg shadow-md shadow-green-500/20"
+    >
+      <div class="flex">
+        <div class="flex items-center gap-4 p-4">
+          <div class="shrink-0">
+            <svg width="32" height="32" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M20 16v-6h2v6a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2h8v2H8v12h12m-9.09-8.92L14 10.17l6.59-6.59L22 5l-8 8l-4.5-4.5l1.41-1.42M16 20v2H4a2 2 0 0 1-2-2V7h2v13h12Z"
+              ></path>
+            </svg>
           </div>
-    
-        <div class="flex flex-col items-center justify-center whitespace-normal
-            w-96 h-">
-    
-            <h1 class="font-montserrat font-bold text-4xl text-center
-                text-[#56C969]">Donate The Trees</h1>
-            <h2 class="font-montserrat font-bold text-xl text-center text-black">
-                And Contribute to Environment by Making an Impact to the World </h2>
+          <div class="space-y-1">
+            <p class="font-bold capitalize">Donation Submitted!</p>
+            <p id="success-alert-message" class="text-md">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+              et pharetra dui, sed varius tellus.
+            </p>
+          </div>
         </div>
-    
-        <div class="flex flex-row items-start justify-center w-full gap-5">
-    
-            <div class="w-1/3 hidden md:block">
-                <img
-                    src="https://drive.google.com/uc?export=view&id=1PEoE5n55JHIQW_h_YAi77FaOozY7dnAI"
-                    alt="Forest">
-    
-    
-    
-            </div>
-    
-            <!-- DONATION FORM -->
-            <form
-                method="POST"
-                class="flex flex-col items-start gap-8 p-5 h-full shadow-lg
-                rounded-xl w-full md:w-1/2"
-                id="donation-form">
-                {% csrf_token %}
-                <!-- Donation amount -->
-                <div class="flex flex-col items-start gap-2 w-full">
-                    <div>
-                        <h1 class="font-montserrat font-bold text-md text-start
-                            text-black">Donation Amount</h1>
-                    </div>
-                    <div class="flex flex-row gap-5 justify-center md:justify-start">
-                        <button name="amount-button" id="1-amount-button" value="10000" class="button-primary">1 Tree</button>
-                        <button name="amount-button" id="3-amount-button" value="50000" class="button-primary">5 Trees</button>
-                        <button name="amount-button" id="5-amount-button" value="100000" class="button-primary">10 Trees</button>
-                        <button name="amount-button" id="5-amount-button" value="" class="button-primary">Other</button>
-                    </div>
-    
-    
-    
-                    <div class="flex flex-row py-1 gap-3 w-full items-center justify-center ">
-    
-                            <h1 class="text-lg font-bold font-montserrat">Rp</h1>
-                            
-    
-                            {{form.amount}}
-                
-                    </div>
-                    <p class="mt-2 text-sm text-black font-montserrat font-bold">Your input has to be in multiples of 10000</p>
-    
-                </div>
-                <!-- country and region -->
-                <div class="flex items-start gap-9 w-full flex-col md:flex-row">
-                    <div class="flex flex-col items-start gap-2 w-full md:w-1/2">
-                        <h1 class="font-montserrat font-bold text-md text-start
-                            text-black">Country</h1>
-                        <!-- <input id="country" type="text" name="country" class="w-full
-                            rounded-lg outline outline-offset-0 outline-2"
-                            placeholder="Select the country" required
-                            /> -->
-                        {{form.country}}
-                    </div>
-                    <div class="flex flex-col items-start gap-2 w-full md:w-1/2">
-                        <h1 class="font-montserrat font-bold text-md text-start
-                            text-black">Region</h1>
-                        <!-- <input id="region" type="text" name="region" class="w-full
-                            rounded-lg outline outline-offset-0 outline-2"
-                            placeholder="Select the region" required
-                            /> -->
-                        {{form.region}}
-                        
-                    </div>
-                </div>
-                <!-- donate for someone? -->
-                <div class="flex flex-row gap-1 items-center">
-                    <!-- <input id="donate_for_someone" type="checkbox"
-                        name="donate_for_someone" class="checked:bg-[#56C969]
-                        indeterminate:bg-gray-300"> -->
-                    {{form.donate_for_someone}}
-                    <p class="font-montserrat font-bold text-sm text-start
-                        text-black">Donate for someone?</p>
-                </div>
-    
-                <!-- name -->
-                <div id="name-div" class="hidden flex-col w-full">
-                    <h1 class="font-montserrat font-bold text-md text-start
-                        text-black">Name</h1>
-                    <!-- <input id="name" type="text" name="name" class="w-full
-                        rounded-lg outline outline-offset-0 outline-2"
-                        placeholder="John Doe" required
-                        /> -->
-                    {{form.name}}
-                </div>
-                <!-- phone -->
-                <div id="phone-div" class="hidden flex-col w-full">
-                    <h1 class="font-montserrat font-bold text-md text-start
-                        text-black">Phone</h1>
-                    <!-- <input id="phone" type="text" name="phone" class="w-full
-                        rounded-lg outline outline-offset-0 outline-2"
-                        placeholder="0858XXXXXXXX" required
-                        /> -->
-                    {{form.phone}}
-                </div>
-                <!-- email -->
-                <div id="email-div" class="hidden flex-col w-full">
-                    <h1 class="font-montserrat font-bold text-md text-start
-                        text-black">Email</h1>
-                    <!-- <input id="email" type="email" name="email" class="w-full
-                        rounded-lg outline outline-offset-0 outline-2"
-                        placeholder="example@gmail.com" required
-                        /> -->
-                    {{form.email}}
-                </div>
-    
-                <!-- hopes -->
-                <div class="flex flex-col w-full">
-                    <h1 class="font-montserrat font-bold text-md text-start
-                        text-black">Hopes</h1>
-                    <!-- <textarea id="hopes" name="hopes" class="w-full
-                        rounded-lg outline outline-offset-0 outline-2" rows="4"
-                        cols="50" placeholder="Your hopes for this donation"
-                        required></textarea> -->
-                    {{form.hopes}}
-                </div>
-    
-                <!-- payment image -->
-                <div class="flex flex-col w-full">
-                    <h1 class="font-montserrat font-bold text-md text-start
-                        text-black">Proof of Payment</h1>
-                    {{form.payment}}
-                </div>
-                <!-- donate button -->
-                <div class="flex flex-row">
-                    <button type="submit" class="button-primary">Donate</button>
-                </div>
-    
-                <div id="data" class="flex flex-col w-full items-start gap-4">
-                </div>
-    
-    
-    
-            </form>
-    
-    
-    
+        <div
+          class="flex items-center px-4 border-l border-green-200 cursor-pointer hover:bg-green-200"
+        >
+          <button class="" id="close-success-alert">
+            <svg width="20" height="28" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
+              ></path>
+            </svg>
+          </button>
         </div>
+      </div>
     </div>
 
+    <div
+      name="full-alert"
+      id="full-error-alert"
+      style="display: none"
+      class="max-w-lg overflow-hidden rounded-lg shadow-md bg-rose-100 text-rose-700 shadow-rose-500/20"
+    >
+      <div class="flex">
+        <div class="flex items-center gap-4 p-4">
+          <div class="shrink-0">
+            <svg width="32" height="32" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M12 13q.425 0 .713-.288Q13 12.425 13 12V7.975q0-.425-.287-.7Q12.425 7 12 7t-.712.287Q11 7.575 11 8v4.025q0 .425.288.7q.287.275.712.275Zm0 4q.425 0 .713-.288Q13 16.425 13 16t-.287-.713Q12.425 15 12 15t-.712.287Q11 15.575 11 16t.288.712Q11.575 17 12 17Zm0 5q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Zm0-10Zm0 8q3.325 0 5.663-2.337Q20 15.325 20 12t-2.337-5.663Q15.325 4 12 4T6.338 6.337Q4 8.675 4 12t2.338 5.663Q8.675 20 12 20Z"
+              ></path>
+            </svg>
+          </div>
+          <div class="space-y-1">
+            <p class="font-bold capitalize">An Error Occured</p>
+            <p id="error-alert-message" class="text-md">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+              et pharetra dui, sed varius tellus.
+            </p>
+          </div>
+        </div>
+        <div
+          class="flex items-center px-5 border-l cursor-pointer border-rose-200 hover:bg-rose-200"
+        >
+          <button class="" id="close-error-alert">
+            <svg width="20" height="28" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div
+    class="flex flex-col items-center justify-center whitespace-normal">
+    <h1 class="font-montserrat font-bold text-xl md:text-4xl text-center text-[#56C969]">
+      Donate The Trees
+    </h1>
+    <h2 class="text-sm font-bold text-center text-black md:text-xl font-montserrat">
+      And Contribute to Environment by Making an Impact to the World
+    </h2>
+  </div>
 
+  <div class="flex flex-row items-start justify-center w-full lg:w-[960px] lg:h-[960px] gap-5">
+    <div
+      class="items-center justify-center hidden w-1/2 h-full px-8 bg-no-repeat bg-cover lg:flex rounded-3xl"
+      style="background-image: url({%static 'images/donation-illust.svg' %})"
+    >
+    <span class="text-4xl font-bold text-center text-white">
+      When you plant a tree, you are contributing in making this world a better place to live
+    </span>
+    </div>
 
+    <!-- DONATION FORM -->
+    <form
+      method="POST"
+      class="flex flex-col items-start w-full h-full gap-8 p-5 overflow-auto shadow-lg rounded-xl lg:w-1/2"
+      id="donation-form"
+    >
+      {% csrf_token %}
+      <!-- Donation amount -->
+      <div class="flex flex-col items-start w-full gap-2">
+        <div>
+          <h1 class="font-bold text-black font-montserrat text-md text-start">
+            Donation Amount
+          </h1>
+        </div>
+        <div class="flex flex-row justify-center gap-5 md:justify-start">
+          <button
+            name="amount-button"
+            id="1-amount-button"
+            value="10000"
+            class="button-primary"
+          >
+            1 Tree
+          </button>
+          <button
+            name="amount-button"
+            id="3-amount-button"
+            value="50000"
+            class="button-primary"
+          >
+            5 Trees
+          </button>
+          <button
+            name="amount-button"
+            id="5-amount-button"
+            value="100000"
+            class="button-primary"
+          >
+            10 Trees
+          </button>
+          <button
+            name="amount-button"
+            id="5-amount-button"
+            value=""
+            class="button-primary"
+          >
+            Other
+          </button>
+        </div>
+
+        <div
+          class="flex flex-row items-center justify-center w-full gap-3 py-1"
+        >
+          <h1 class="text-lg font-bold font-montserrat">Rp</h1>
+
+          {{form.amount}}
+        </div>
+        <p class="mt-2 text-sm font-bold text-black font-montserrat">
+          Your input has to be in multiples of 10000
+        </p>
+      </div>
+      <!-- country and region -->
+      <div class="flex flex-col items-start w-full gap-9 md:flex-row">
+        <div class="flex flex-col items-start w-full gap-2 md:w-1/2">
+          <h1 class="font-bold text-black font-montserrat text-md text-start">
+            Country
+          </h1>
+          <!-- <input id="country" type="text" name="country" class="w-full rounded-lg outline outline-offset-0 outline-2"
+                            placeholder="Select the country" required
+                            /> -->
+          {{form.country}}
+        </div>
+        <div class="flex flex-col items-start w-full gap-2 md:w-1/2">
+          <h1 class="font-bold text-black font-montserrat text-md text-start">
+            Region
+          </h1>
+          <!-- <input id="region" type="text" name="region" class="w-full rounded-lg outline outline-offset-0 outline-2"
+                            placeholder="Select the region" required
+                            /> -->
+          {{form.region}}
+        </div>
+      </div>
+      <!-- donate for someone? -->
+      <div class="flex flex-row items-center gap-1">
+        <!-- <input id="donate_for_someone" type="checkbox"
+                        name="donate_for_someone" class="checked:bg-[#56C969]
+                        indeterminate:bg-gray-300"> -->
+        {{form.donate_for_someone}}
+        <p class="text-sm font-bold text-black font-montserrat text-start">
+          Donate for someone?
+        </p>
+      </div>
+
+      <!-- name -->
+      <div id="name-div" class="flex-col hidden w-full">
+        <h1 class="font-bold text-black font-montserrat text-md text-start">
+          Name
+        </h1>
+        <!-- <input id="name" type="text" name="name" class="w-full rounded-lg outline outline-offset-0 outline-2"
+                        placeholder="John Doe" required
+                        /> -->
+        {{form.name}}
+      </div>
+      <!-- phone -->
+      <div id="phone-div" class="flex-col hidden w-full">
+        <h1 class="font-bold text-black font-montserrat text-md text-start">
+          Phone
+        </h1>
+        <!-- <input id="phone" type="text" name="phone" class="w-full rounded-lg outline outline-offset-0 outline-2"
+                        placeholder="0858XXXXXXXX" required
+                        /> -->
+        {{form.phone}}
+      </div>
+      <!-- email -->
+      <div id="email-div" class="flex-col hidden w-full">
+        <h1 class="font-bold text-black font-montserrat text-md text-start">
+          Email
+        </h1>
+        <!-- <input id="email" type="email" name="email" class="w-full rounded-lg outline outline-offset-0 outline-2"
+                        placeholder="example@gmail.com" required
+                        /> -->
+        {{form.email}}
+      </div>
+
+      <!-- hopes -->
+      <div class="flex flex-col w-full">
+        <h1 class="font-bold text-black font-montserrat text-md text-start">
+          Hopes
+        </h1>
+        <!-- <textarea id="hopes" name="hopes" class="w-full rounded-lg outline outline-offset-0 outline-2" rows="4"
+                        cols="50" placeholder="Your hopes for this donation"
+                        required></textarea> -->
+        {{form.hopes}}
+      </div>
+
+      <!-- payment image -->
+      <div class="flex flex-col w-full">
+        <h1 class="font-bold text-black font-montserrat text-md text-start">
+          Proof of Payment
+        </h1>
+        {{form.payment}}
+      </div>
+      <!-- donate button -->
+      <div class="flex flex-row">
+        <button type="submit" class="button-primary">Donate</button>
+      </div>
+
+      <div id="data" class="flex flex-col items-start w-full gap-4"></div>
+    </form>
+  </div>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="{% static '/js/donation.js' %}"></script>
