@@ -18,8 +18,3 @@ class Donation(models.Model):
     donate_for_someone = models.BooleanField()
     person = models.OneToOneField(Person, on_delete=models.CASCADE, null=True, blank=True)
     payment = models.ImageField(upload_to='bukti_pembayaran', default=None)
-
-
-
-    
-

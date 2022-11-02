@@ -16,16 +16,16 @@ from django.views.decorators.csrf import csrf_exempt
 from django.template import RequestContext
 
 # Create your views here.
-
+@login_required(login_url='/')
 def show_donation(request):
     context = { 'form': DonationForm() }
 
     return render(request, "donation.html", context)
 
+@login_required(login_url='/')
 def submit_donation(request):
     # form = DonationForm(request.POST or None)
 
-    print(request.method)
     if request.method == 'POST':
         form = DonationForm(request.POST, request.FILES)
 
@@ -70,9 +70,4 @@ def submit_donation(request):
 
             return JsonResponse(json.loads(json_object))
 
-
-# for debugging purposes
-def get_donations_json(request):
-    data = Donation.objects.all()
-    return HttpResponse(serializers.serialize('json', data))
 
