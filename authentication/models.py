@@ -22,5 +22,5 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    def get_username(self):
+    def get_name(self):
         return self.username
