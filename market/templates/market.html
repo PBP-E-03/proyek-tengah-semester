@@ -1,65 +1,51 @@
-{% extends 'base.html' %}
-{% block meta %}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Market</title>
-{% endblock meta %}
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="flex flex-col w-full h-full gap-6 px-6 py-16">
+  <div class="flex flex-col items-center justify-center w-full">
+    <h1
+      class="text-[#56C969] font-['Montserrat'] font-bold text-4xl text-center"
+    >
+      Trade Your Reward
+    </h1>
+    <h2 class="text-black font-['Montserrat'] text-xl text-center">
+      Because You Deserve a Tremendous Rewards
+    </h2>
+  </div>
+  <div
+    id="cards-container"
+    class="grid w-full grid-cols-2 gap-6 py-4 md:grid-cols-3 lg:grid-cols-4"
+  ></div>
+  <div class="flex justify-center w-full gap-4">
+    <button id="prev-btn" class="font-bold text-[#56C969]">Prev</button>
+    <span class="flex gap-2 font-bold">
+      Page
+      <span id="current-page" class="text-[#56C969]"></span>
+      of
+      <span id="number-pages"></span>
+    </span>
+    <button id="next-btn" class="font-bold text-[#56C969]">Next</button>
+  </div>
+</div>
 
-{% block content %}
-<script type="text/javascript">
-function add(id, stock){
-    var countElement = document.getElementById("count "+id);
+{% endblock content %} {% block script %}
+<script src="{% static '/js/market.js' %}"></script>
+<script>
+  function add(id, stock) {
+    var countElement = document.getElementById('count-' + id);
     let count = parseInt(countElement.innerHTML);
     countElement.innerHTML = count;
     if (count < stock) {
-        count+=1;
+      count += 1;
     }
-    console.log(id);
     countElement.innerHTML = count;
-}
-function sub(id){
-    var countElement = document.getElementById("count "+id);
+  }
+
+  function sub(id) {
+    var countElement = document.getElementById('count-' + id);
     let count = parseInt(countElement.innerHTML);
     if (count >= 1) {
-        count-=1;
+      count -= 1;
     }
     countElement.innerHTML = count;
-}
+  }
 </script>
-
-<div class="flex flex-col">
-    <div class="container w-full flex flex-col justify-center items-center">
-        <h1 class="text-[#56C969] font-['Montserrat'] font-bold text-4xl">Trade Your Reward</h1>
-        <h1 class="text-black font-['Montserrat'] text-xl">Because You Deserve a Tremendous Rewards</h1>
-    </div>
-    <div class="container grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-4 w-full h-1/2 left-[20px] p-[32px]">
-        {% for product in list_products %}
-            <div id="{{ product.pk }}" class="flex w-full justify-center">
-                <div class="container flex flex-col w-[225px] h-[308px] shadow-md rounded-[10px] border-[16px] border-white rounded-[10px]">
-                    <div class="flex grow h-1/2 items-center">
-                        {% load static %} <img src="{{ product.image_url }}">
-                    </div>
-                    <div class="h-1/2">
-                        <p class="font-['Montserrat'] font-bold text-base">{{ product.name }}</p>
-                        <p class="font-['Montserrat']"><span class="text-[#56C969]">{{ product.stock }}</span><span class="pl-2"> remaining</span></p>
-                        <div class="flex flex-row  gap-4 pb-[16px]">
-                            <button onclick="sub({{ product.pk }})" class="grow text-right text-[#56C969] font-['Montserrat'] font-bold">-</button>
-                            <object id="count {{ product.pk }}" class="grow-0 font-['Montserrat']">0</object>
-                            <button onclick="add({{ product.pk }}, {{ product.stock }})" class="grow text-left font-['Montserrat'] text-[#56C969] font-bold">+</button>
-                        </div>
-                        <div class="flex flex-row items-center">
-                            <div class="flex flex-row w-1/2 gap-2">
-                                <div class=""><img src="{% static 'Vectora.png' %}" class=""></div>
-                                <p class="">{{ product.price }}</p>
-                            </div>
-                            <div class="grow">
-                                <button class="w-full button-primary text-white">BUY</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-</div>
-
-{% endblock content %}
+{% endblock script %}

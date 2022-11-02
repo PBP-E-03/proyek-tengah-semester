@@ -6,15 +6,16 @@ from donation.models import Donation
 import json
 import requests
 
-resCountry = requests.get("http://battuta.medunes.net/api/country/all/?key=d0daed3e6e5d17c42e803fafab5e603f")
 
-response = json.loads(resCountry.text)
-print(response)
+# resCountry = requests.get("http://battuta.medunes.net/api/country/all/?key=bf52beebb1eb14a75f4894fb8f717336")
 
-country_choices = []
+# response = json.loads(resCountry.text)
+# print(response)
 
-for x in response:
-    country_choices.append((x["code"],x["name"]))
+# country_choices = []
+
+# for x in response:
+#     country_choices.append((x["code"],x["name"]))
 
 
 
@@ -26,7 +27,7 @@ class ChoiceFieldNoValidation(forms.ChoiceField):
 
 class DonationForm(forms.ModelForm):
     amount = forms.IntegerField(required=True, widget=forms.NumberInput(attrs={'placeholder': 'other amount'}))
-    country = forms.ChoiceField(required=True, choices=country_choices)
+    # country = forms.ChoiceField(required=True, choices=country_choices)
     region = forms.CharField(required=True, widget=forms.Select(choices=[]))
     hopes = forms.CharField(widget=forms.Textarea(attrs={'rows':5, 'cols':50, 'placeholder':'Your hopes for this donation'}))
     donate_for_someone = forms.BooleanField(required=False)
