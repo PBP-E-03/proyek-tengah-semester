@@ -4,7 +4,7 @@ from django.shortcuts import render
 import requests
 
 def index(request):
-    return render(request, 'example.html')
+    return render(request, 'index.html')
 
 def get_country(request):
     response = requests.get("http://battuta.medunes.net/api/country/all/?key=bf52beebb1eb14a75f4894fb8f717336")

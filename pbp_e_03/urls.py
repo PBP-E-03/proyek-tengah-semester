@@ -23,5 +23,6 @@ urlpatterns = [
     path('donation/', include('donation.urls')),
     path('auth/', include('authentication.urls')),
     path('leaderboard/', include('leaderboard.urls')),
-    path('market/', include('market.urls'))
+    path('market/', include('market.urls')),
+    path('profile/', include('user_profile.urls')),
 ]
