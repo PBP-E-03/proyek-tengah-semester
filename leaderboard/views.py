@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from leaderboard.models import Task
 
 def show_leaderboard(request):
     context = {}
