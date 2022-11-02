@@ -1,0 +1,502 @@
+[
+  {
+    "pk": 1,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Chair",
+      "stock": 8,
+      "price": "245"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Car",
+      "stock": 2,
+      "price": "353"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Pants",
+      "stock": 9,
+      "price": "866"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Bacon",
+      "stock": 9,
+      "price": "930"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Bike",
+      "stock": 4,
+      "price": "670"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Salad",
+      "stock": 2,
+      "price": "684"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Car",
+      "stock": 2,
+      "price": "283"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Fish",
+      "stock": 6,
+      "price": "283"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Table",
+      "stock": 5,
+      "price": "457"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Mouse",
+      "stock": 1,
+      "price": "213"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Tuna",
+      "stock": 8,
+      "price": "836"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Fish",
+      "stock": 1,
+      "price": "23"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Shoes",
+      "stock": 10,
+      "price": "790"
+    }
+  },
+  {
+    "pk": 14,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Computer",
+      "stock": 5,
+      "price": "950"
+    }
+  },
+  {
+    "pk": 15,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Shoes",
+      "stock": 5,
+      "price": "882"
+    }
+  },
+  {
+    "pk": 16,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Computer",
+      "stock": 7,
+      "price": "779"
+    }
+  },
+  {
+    "pk": 17,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Shirt",
+      "stock": 5,
+      "price": "834"
+    }
+  },
+  {
+    "pk": 18,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Gloves",
+      "stock": 9,
+      "price": "269"
+    }
+  },
+  {
+    "pk": 19,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Chips",
+      "stock": 3,
+      "price": "892"
+    }
+  },
+  {
+    "pk": 20,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Sausages",
+      "stock": 7,
+      "price": "955"
+    }
+  },
+  {
+    "pk": 21,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Keyboard",
+      "stock": 6,
+      "price": "139"
+    }
+  },
+  {
+    "pk": 22,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Hat",
+      "stock": 9,
+      "price": "612"
+    }
+  },
+  {
+    "pk": 23,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Tuna",
+      "stock": 7,
+      "price": "988"
+    }
+  },
+  {
+    "pk": 24,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Keyboard",
+      "stock": 8,
+      "price": "356"
+    }
+  },
+  {
+    "pk": 25,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Gloves",
+      "stock": 1,
+      "price": "290"
+    }
+  },
+  {
+    "pk": 26,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Gloves",
+      "stock": 3,
+      "price": "837"
+    }
+  },
+  {
+    "pk": 27,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Shirt",
+      "stock": 7,
+      "price": "685"
+    }
+  },
+  {
+    "pk": 28,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Mouse",
+      "stock": 6,
+      "price": "12"
+    }
+  },
+  {
+    "pk": 29,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Ball",
+      "stock": 2,
+      "price": "89"
+    }
+  },
+  {
+    "pk": 30,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Fish",
+      "stock": 10,
+      "price": "37"
+    }
+  },
+  {
+    "pk": 31,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Chair",
+      "stock": 2,
+      "price": "613"
+    }
+  },
+  {
+    "pk": 32,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Table",
+      "stock": 3,
+      "price": "652"
+    }
+  },
+  {
+    "pk": 33,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Soap",
+      "stock": 6,
+      "price": "286"
+    }
+  },
+  {
+    "pk": 34,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Soap",
+      "stock": 1,
+      "price": "915"
+    }
+  },
+  {
+    "pk": 35,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Hat",
+      "stock": 10,
+      "price": "525"
+    }
+  },
+  {
+    "pk": 36,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Chair",
+      "stock": 1,
+      "price": "478"
+    }
+  },
+  {
+    "pk": 37,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Table",
+      "stock": 5,
+      "price": "18"
+    }
+  },
+  {
+    "pk": 38,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Pizza",
+      "stock": 9,
+      "price": "454"
+    }
+  },
+  {
+    "pk": 39,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Keyboard",
+      "stock": 7,
+      "price": "371"
+    }
+  },
+  {
+    "pk": 40,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Cheese",
+      "stock": 5,
+      "price": "282"
+    }
+  },
+  {
+    "pk": 41,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Chips",
+      "stock": 6,
+      "price": "605"
+    }
+  },
+  {
+    "pk": 42,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Chicken",
+      "stock": 1,
+      "price": "116"
+    }
+  },
+  {
+    "pk": 43,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Shoes",
+      "stock": 10,
+      "price": "594"
+    }
+  },
+  {
+    "pk": 44,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Soap",
+      "stock": 3,
+      "price": "226"
+    }
+  },
+  {
+    "pk": 45,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Fish",
+      "stock": 8,
+      "price": "736"
+    }
+  },
+  {
+    "pk": 46,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Pants",
+      "stock": 7,
+      "price": "391"
+    }
+  },
+  {
+    "pk": 47,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Fish",
+      "stock": 7,
+      "price": "618"
+    }
+  },
+  {
+    "pk": 48,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Bacon",
+      "stock": 7,
+      "price": "689"
+    }
+  },
+  {
+    "pk": 49,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Ball",
+      "stock": 5,
+      "price": "58"
+    }
+  },
+  {
+    "pk": 50,
+    "model": "market.product",
+    "fields": {
+      "image": "https://loremflickr.com/640/480/fashion",
+      "name": "Mouse",
+      "stock": 2,
+      "price": "794"
+    }
+  }
+]
