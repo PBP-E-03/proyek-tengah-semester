@@ -33,18 +33,30 @@ def submit_donation(request):
             else:
                 person_instance = None
 
-
-            print(person_instance)
             obj.person = person_instance
+            
+
+            amount = form.cleaned_data['amount']
+            user = request.user
+            coins_added = 50*amount
+            user.coin_amount = user.coin_amount + coins_added
+            user.save()
+
+            print(user.coin_amount)
+
+            obj.user = user
+
+
             obj.save()
 
+            print(obj)
 
-            user = request.user
+
 
             # the request response
             data = {
             "message": 'Successfully submitted',
-            "coin" : '0'
+            "coin" : coins_added,
             }
         
             json_object = json.dumps(data, indent = 4) 
