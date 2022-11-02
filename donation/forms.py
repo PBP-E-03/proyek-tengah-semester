@@ -6,7 +6,7 @@ from donation.models import Donation
 import json
 import requests
 
-resCountry = requests.get("http://battuta.medunes.net/api/country/all/?key=bf52beebb1eb14a75f4894fb8f717336")
+resCountry = requests.get("http://battuta.medunes.net/api/country/all/?key=d0daed3e6e5d17c42e803fafab5e603f")
 
 response = json.loads(resCountry.text)
 print(response)

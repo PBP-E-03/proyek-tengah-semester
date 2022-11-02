@@ -12,7 +12,7 @@ class ProfileForm(ModelForm):
     
     class Meta:
         model = User
-        fields = ['name', 'email', 'phone', 'address']
+        fields = ['username', 'email', 'phone', 'address']
         
 class PasswordForm(forms.Form):
     current_password = forms.CharField(label="Current Password", widget=forms.PasswordInput(attrs={
