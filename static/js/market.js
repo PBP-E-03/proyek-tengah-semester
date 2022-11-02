@@ -29,6 +29,8 @@ const initQueryParam = (url) => {
   window.history.pushState({}, '', url);
 };
 
+const buyProducts = () => {};
+
 const getProducts = async (pageNumber) => {
   const cardContainer = document.querySelector('#cards-container');
   const currentPage = document.querySelector('#current-page');
@@ -104,11 +106,42 @@ const getProducts = async (pageNumber) => {
             <span class="font-bold">${product.price}</span>
           </div>
           <div class="grow md:w-1/2 w-full">
-            <button class="w-full text-white button-primary">BUY</button>
+            <button id="buy-btn" data-id=${product.id} class="w-full text-white button-primary">BUY</button>
           </div>
         </div>
       </div>
     </div>`;
     });
   }
+
+  const buyButtons = document.querySelectorAll('#buy-btn');
+
+  buyButtons.forEach((buyButton) => {
+    buyButton.addEventListener('click', async () => {
+      const formData = {
+        amount: parseInt(
+          document.querySelector(`#count-${buyButton.dataset.id}`).innerText
+        ),
+        productId: buyButton.dataset.id,
+      };
+
+      if (formData.amount != 0) {
+        const response = await fetch('/market/transaction', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCSRFToken(),
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          location.reload();
+        }
+      }
+    });
+  });
 };

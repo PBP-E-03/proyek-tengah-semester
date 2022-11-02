@@ -12,4 +12,4 @@ class TransactionHistory(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     amount = models.IntegerField()
-    date = models.DateField()
+    date = models.DateTimeField()
