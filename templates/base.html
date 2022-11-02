@@ -4,6 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generositree</title>
 
     <!-- import Monsterrat font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto&display=swap" rel="stylesheet">
@@ -14,49 +15,67 @@
 
   <body class="relative w-full h-screen">
     <nav
-      class="fixed flex items-center justify-between w-full px-3 py-2 bg-white h-14"
+      class="fixed flex flex-col w-full h-14"
     >
-      <a href="/">
-        <img src="{% static '/images/GenerosiTree.png' %}" />
-      </a>
-      <div class="flex items-center gap-6">
-        <div class="flex gap-4">
-          <a href="/" class="font-bold">Home</a>
-          <a href="/donation" class="font-bold">Donation</a>
-          <a href="/market" class="font-bold">Market</a>
-        </div>
-        {% if user.is_authenticated %}
-        <div class="relative">
-          <button id="dropdown-btn" class="font-bold text-[#56C969]">
-            Hello, {{user.get_name }}
-          </button>
-          <div
-            id="dropdown"
-            class="absolute flex-col hidden w-full gap-2 px-4 py-2 mt-6 bg-white rounded-lg drop-shadow-2xl"
-          >
-            <a href="{% url 'user_profile:profile' %}" class="hover:text-[#56C969]">Profile</a>
-            <div>test</div>
-            <button
-                id="logout-btn"
-                class="font-bold text-left text-red-600 hover:text-red-800"
-              >
-                Logout
-              </button>
+      <div class="flex items-center justify-between w-full px-3 py-2 bg-white">
+        <a href="/">
+          <img src="{% static '/images/GenerosiTree.png' %}" class="w-28 md:w-auto"/>
+        </a>
+        <div class="items-center hidden gap-6 md:flex">
+          <div class="flex gap-4">
+            <a href="/" class="font-bold hover:text-[#56C969]">Home</a>
+            <a href="/donation" class="font-bold hover:text-[#56C969]">Donation</a>
+            <a href="/market" class="font-bold hover:text-[#56C969]">Market</a>
           </div>
+          {% if user.is_authenticated %}
+          <div class="relative">
+            <button id="dropdown-btn" class="font-bold text-[#56C969]">
+              Hello, {{user.get_name }}
+            </button>
+            <div
+              id="dropdown"
+              class="absolute flex-col hidden w-full gap-2 px-4 py-2 mt-6 bg-white rounded-lg drop-shadow-2xl"
+            >
+              <a href="{% url 'user_profile:profile' %}" class="hover:text-[#56C969]">Profile</a>
+              <div>test</div>
+              <button
+                  id="logout-btn"
+                  class="font-bold text-left text-red-600 hover:text-red-800"
+                >
+                  Logout
+                </button>
+            </div>
+          </div>
+          {% else %}
+          <button id="login-btn" class="text-white button-primary">Login</button
+          >{% endif %}
         </div>
-        {% else %}
-        <button id="login-btn" class="text-white button-primary">Login</button
-        >{% endif %}
+        <button id="menu-btn" class="group md:hidden">
+          <img src="{% static '/images/bars.svg' %}" class="block group-hover:hidden"/>
+          <img src="{% static '/images/bars-green.svg' %}" class="hidden group-hover:block"/>
+        </button>
+      </div>
+      <div id="expanded-navbar" class="flex-col hidden w-full gap-2 px-3 py-2 bg-white">
+        <div class="flex flex-col gap-1">
+          <a href="/" class="font-bold hover:text-[#56C969]">Home</a>
+          <a href="/donation" class="font-bold hover:text-[#56C969]">Donation</a>
+          <a href="/market" class="font-bold hover:text-[#56C969]">Market</a>
+        </div>
+        <button id="login-btn" class="text-white button-primary">Login</button>
       </div>
     </nav>
-
-    {% block content %} 
-    {% endblock content %}
     
     <div
       id="modal"
-      class="absolute top-0 z-10 flex-col items-center justify-center hidden w-full h-screen gap-4 bg-black/50"
+      class="absolute top-0 z-10 flex-col items-center justify-center hidden w-full h-screen gap-4 px-4 bg-black/50"
     ></div>
+
+    {% block content %} 
+    {% endblock content %}
+
+    <footer class="flex justify-center w-full py-8 font-bold bg-[#56C969] text-white">Developed with ❤️ by PBP E 03</footer>
+    
+    
 
     <script src="{% static '/js/base.js' %}"></script>
     {% block script %}{% endblock script %}
