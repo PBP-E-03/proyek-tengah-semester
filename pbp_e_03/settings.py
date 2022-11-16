@@ -32,7 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ["https://pbp-e-03.herokuapp.com/"]
+CSRF_TRUSTED_ORIGINS = ["https://www.pbp-e-03.herokuapp.com/", "https:/pbp-e-03.herokuapp.com/"]
 
 # Application definition
 
