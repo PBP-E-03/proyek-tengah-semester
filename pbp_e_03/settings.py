@@ -32,7 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ["https://www.pbp-e-03.herokuapp.com/", "https:/pbp-e-03.herokuapp.com/"]
+CSRF_TRUSTED_ORIGINS = ["https://www.pbp-e-03.herokuapp.com/", "https://pbp-e-03.herokuapp.com/"]
 
 # Application definition
 
@@ -170,4 +170,5 @@ NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd" if os.name == "nt" else "/usr/
     
 AUTH_USER_MODEL = 'authentication.User'
 
-
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
