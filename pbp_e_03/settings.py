@@ -12,28 +12,25 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from datetime import timedelta
 import os
-import environ
+from dotenv import load_dotenv
 
 from pathlib import Path
 
-env = environ.Env()
-environ.Env.read_env()
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-my5sec#_avvb#m%7@a-iyzvte36hr5$hw951b%a%457=)@qxzy"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("APP_MODE") == "dev" 
 
 ALLOWED_HOSTS = ["*"]
-
-CSRF_TRUSTED_ORIGINS = ["https://www.pbp-e-03.herokuapp.com/", "https://pbp-e-03.herokuapp.com/"]
 
 # Application definition
 
@@ -134,11 +131,11 @@ WSGI_APPLICATION = 'pbp_e_03.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "db_generositree",
-        'USER': "postgres",
-        'PASSWORD': "gaktaubos",
-        'HOST': "localhost",
-        'PORT': 5432,
+        'NAME': os.getenv("PBDATABASE"),
+        'USER': os.getenv("PGUSER"),
+        'PASSWORD': os.getenv("PGPASSWORD"),
+        'HOST': os.getenv("PGHOST"),
+        'PORT': os.getenv("PGPORT"),
     }
 }
 
