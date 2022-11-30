@@ -1,21 +1,33 @@
 import code
 import json
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
-import requests
-from django.middleware.csrf import rotate_token
-
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 from main.models import Country, Region
+from rest_framework import status
 
-def index(request):
-    rotate_token(request)
-    return render(request, 'index.html')
-
+@api_view(['GET'])
 def get_country(request):
-    response = Country.objects.all().values()
-    json_object = json.dumps(list(response), indent = 4) 
-
-    return JsonResponse(json.loads(json_object), safe=False)
+    try:
+        countries = Country.objects.all().values()
+        
+        response = {
+            "success": True,
+            "content": {
+                "countries": list(countries)
+            },
+            "message": "Countries successfully retrieved!"
+        }
+        
+        return Response(data=response, status=status.HTTP_200_OK)
+    except Exception as e:
+        response = {
+            "success": False,
+            "content": None,
+            "message": str(e)
+        }
+         
+        return Response(data=response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 def get_region(request, country_code):
     response = Region.objects.filter(code=country_code).values()
