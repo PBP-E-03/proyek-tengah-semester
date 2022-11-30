@@ -1,8 +1,8 @@
 from django.urls import path
-from leaderboard.views import show_leaderboard
+from leaderboard.views import  get_leaderboard_by_country
 
 app_name = "leaderboard"
 
 urlpatterns = [
-    path('', show_leaderboard, name = "leaderboard_home"),
+    path('<str:country_code>', get_leaderboard_by_country, name = "get_leaderboard_by_country"),
 ]
