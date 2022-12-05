@@ -2,14 +2,14 @@
 from django import forms
 from django.forms import Widget
 from django.utils.safestring import mark_safe
-from donation.models import Donation
+from donation.models import DonationHistory
 from main.models import Country
 
 
 class CountryChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
         return obj.name
-class DonationForm(forms.ModelForm):
+class DonationHistoryForm(forms.ModelForm):
     amount = forms.IntegerField(required=True, widget=forms.NumberInput(attrs={'placeholder': 'other amount'}))
     country = CountryChoiceField(required=True, queryset=Country.objects.all(), to_field_name="code", empty_label=None)
     region = forms.CharField(required=True, widget=forms.Select(choices=[]))
@@ -21,7 +21,7 @@ class DonationForm(forms.ModelForm):
     payment = forms.ImageField(required=True)
 
     class Meta:
-        model = Donation
+        model = DonationHistory
         fields = ('amount', 'country', 'region', 'hopes', 'donate_for_someone', 'name', 'phone', 'email', 'payment')
    
 
