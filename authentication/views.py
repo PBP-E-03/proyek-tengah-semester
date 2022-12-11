@@ -7,6 +7,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 
 from authentication.serializers import RegistrationSerializer
+from leaderboard.models import UserStatsSummary
 
 # Create your views here.
 @api_view(['POST'])
@@ -52,6 +53,9 @@ def registration(request: Request):
         if serializer.is_valid():
             user = serializer.save()
             
+            userStatsSummary = UserStatsSummary.objects.create(user=user)  
+            userStatsSummary.save()
+                      
             token = RefreshToken.for_user(user)
 
             response = {

@@ -5,7 +5,7 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework import status
 from donation.serializers import DonationHistorySerializer, PersonSerializer
-from leaderboard.models import UserStats
+from leaderboard.models import UserStats, UserStatsSummary
 from leaderboard.serializers import UserStatsSerializer
 from main.models import Country
 
@@ -40,15 +40,23 @@ def submit_donation(request: Request):
         
         request.user.coin_amount = request.user.coin_amount + rewarded_coins
         
-        user_stats = UserStats.objects.filter(country_code=country.code, user=request.user)
+        user_stats_summary = UserStatsSummary.objects.filter(user=request.user).first()
+        
+        if user_stats_summary is None:
+            raise Exception("User stats summary not found!")
+        
+        user_stats = UserStats.objects.filter(country_code=country.code, user_stats_summary=user_stats_summary)
         
         donation_history = None
+        
+        user_stats_summary.total_donated_tree = user_stats_summary.total_donated_tree + amount
+        user_stats_summary.synced  = False
         
         if user_stats.first() is None:
             user_stats_data = {
                 "donation_amount": amount,
                 "country_code": country.code,
-                "user": request.user.id
+                "user_stats_summary": user_stats_summary.pk
             }
             
             user_stats_serializer = UserStatsSerializer(data=user_stats_data)
@@ -56,6 +64,7 @@ def submit_donation(request: Request):
             if user_stats_serializer.is_valid() and donation_history_serializer.is_valid():
                 donation_history = donation_history_serializer.save()
                 user_stats_serializer.save()
+                user_stats_summary.save()
             else:
                 print("User Stats error:", user_stats_serializer.errors)
                 print("Donation error:", donation_history_serializer.errors)
@@ -67,6 +76,7 @@ def submit_donation(request: Request):
             if donation_history_serializer.is_valid():
                 donation_history = donation_history_serializer.save()
                 user_stats.save()
+                user_stats_summary.save()
             else:
                 print("Donation error:", donation_history_serializer.errors)
                 raise Exception("donation error")
