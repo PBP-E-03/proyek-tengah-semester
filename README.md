@@ -1,4 +1,4 @@
-## Nama-nama anggota kelompok
+## Nama-nama Anggota Kelompok
 - Adjie Djaka Permana
 - Muhammad Reyvan Natechnoury
 - Dhafiano Fadeyka Ghani Wiweko
