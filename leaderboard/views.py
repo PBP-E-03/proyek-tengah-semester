@@ -1,11 +1,12 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.request import Request
 from rest_framework.response import Response
 from leaderboard.models import UserStats, UserStatsSummary
 from rest_framework import status
 from main.models import Country
-
+from rest_framework.permissions import IsAuthenticated
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def get_leaderboard_by_country(request: Request, country_code):
     try:
         user_stats = UserStats.objects.filter(country_code = country_code).order_by('-donation_amount').values()
@@ -41,6 +42,7 @@ def get_leaderboard_by_country(request: Request, country_code):
         return Response(data=response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def get_leaderboard(request: Request):
     try:
         countries = Country.objects.all().values()
