@@ -18,5 +18,5 @@ class DonationHistory(models.Model):
     hopes = models.TextField()
     donate_for_someone = models.BooleanField()
     person = models.OneToOneField(Person, on_delete=models.CASCADE, null=True, blank=True)
-    payment_receipt = models.ImageField(upload_to='payment_receipt', default=None)
+    payment_receipt = models.ImageField(upload_to='payment_receipt', null=True)
     date = models.DateTimeField(default=timezone.now)
