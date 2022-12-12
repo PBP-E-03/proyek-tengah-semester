@@ -1,5 +1,6 @@
 from django.db import models
 from authentication.models import User
+from django.utils import timezone
 
 # Create your models here.
 class Product(models.Model):
@@ -13,4 +14,4 @@ class TransactionHistory(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     product_amount = models.IntegerField(default=None)
     transaction_amount = models.IntegerField(default=None)
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=timezone.now)

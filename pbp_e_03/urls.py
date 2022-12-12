@@ -24,4 +24,5 @@ urlpatterns = [
     path('leaderboard/', include('leaderboard.urls')),
     path('market/', include('market.urls')),
     path('profile/', include('user_profile.urls')),
+    path('history/', include('history.urls')),
 ]

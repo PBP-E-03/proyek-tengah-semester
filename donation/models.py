@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 from authentication.models import User
 
@@ -18,3 +19,4 @@ class DonationHistory(models.Model):
     donate_for_someone = models.BooleanField()
     person = models.OneToOneField(Person, on_delete=models.CASCADE, null=True, blank=True)
     payment_receipt = models.ImageField(upload_to='payment_receipt', default=None)
+    date = models.DateTimeField(default=timezone.now)
