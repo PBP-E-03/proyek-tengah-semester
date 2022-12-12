@@ -1,9 +1,5 @@
-import json
-from django.http import HttpResponseNotAllowed, JsonResponse
 from rest_framework.response import Response
 from authentication.models import User
-from user_profile.forms import PasswordForm, ProfileForm
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.request import Request
