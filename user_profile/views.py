@@ -20,7 +20,7 @@ def index(request: Request):
         response = {
             "success": True,
             "content": {
-                "name": request.user.username,
+                "username": request.user.username,
                 "email": request.user.email,
                 "phone": request.user.phone,
                 "address": request.user.address
