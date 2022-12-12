@@ -1,11 +1,13 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from leaderboard.models import UserStats, UserStatsSummary
 from main.models import Country
 from rest_framework import status
 from rest_framework.request import Request
+from rest_framework.permissions import IsAuthenticated
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def get_country(request):
     try:
         countries = Country.objects.all().values()
@@ -29,6 +31,7 @@ def get_country(request):
         return Response(data=response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def get_user(request: Request):
     try:
         user_stats_summary =  UserStatsSummary.objects.filter(id=request.user.id).first()
@@ -70,7 +73,7 @@ def get_user(request: Request):
                 "total_donated_tree": user_stats_summary.total_donated_tree,
                 "most_donated_country": most_donated_country
             },
-            "message": "Countries successfully retrieved!"
+            "message": "User successfully retrieved!"
         }
         
         return Response(data=response, status=status.HTTP_200_OK)
