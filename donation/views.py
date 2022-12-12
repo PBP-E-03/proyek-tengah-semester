@@ -10,7 +10,6 @@ from leaderboard.serializers import UserStatsSerializer
 from main.models import Country
 
 @api_view(['POST'])    
-@parser_classes([MultiPartParser])
 def submit_donation(request: Request):
     try:
         data = request.data
@@ -19,7 +18,7 @@ def submit_donation(request: Request):
     
         rewarded_coins = amount * 100
         
-        is_for_someone = data["donate_for_someone"] == "true"
+        is_for_someone = data["donate_for_someone"] 
         
         if is_for_someone and data.get('person') is None:
             raise Exception("Person data is required!")
@@ -33,7 +32,6 @@ def submit_donation(request: Request):
             "country": country.name,
             "hopes": data["hopes"],
             "donate_for_someone": is_for_someone,
-            "payment_receipt": request.FILES['payment_receipt'],
         }
                 
         donation_history_serializer = DonationHistorySerializer(data=donation_history_data)
